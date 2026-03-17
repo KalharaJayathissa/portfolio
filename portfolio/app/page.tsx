@@ -157,11 +157,11 @@ export default function Home() {
             speed={isMobileViewport ? HERO_GRID_SPEED_MOBILE : HERO_GRID_SPEED_DESKTOP}
             squareSize={40}
             direction="diagonal"
-            borderColor="#4b3a69"
+            borderColor="#352a4a"
             hoverFillColor="#222222"
             shape="square"
             hoverTrailAmount={0}
-            className="absolute inset-0 z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40"
+            className="absolute inset-0 z-0 pointer-events-none opacity-20 sm:opacity-25 lg:opacity-30"
           />
           {/* View Counter - Top Right */}
           <motion.div
