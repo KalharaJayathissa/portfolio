@@ -2,17 +2,69 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import ViewCounter from "./components/viewcounter"
 import ClickSpark from '../components/ClickSpark';
+import GlassSurface from "@/components/GlassSurface"
 
 export default function Home() {
+  const navRef = useRef<HTMLElement | null>(null)
+  const [isLightBackgroundUnderNav, setIsLightBackgroundUnderNav] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   })
+
+  useEffect(() => {
+    const getBrightness = (rgb: string) => {
+      const values = rgb.match(/\d+/g)
+      if (!values || values.length < 3) return 0
+      const red = Number(values[0])
+      const green = Number(values[1])
+      const blue = Number(values[2])
+      return (red * 299 + green * 587 + blue * 114) / 1000
+    }
+
+    const updateNavContrast = () => {
+      if (!navRef.current) return
+
+      const rect = navRef.current.getBoundingClientRect()
+      const sampleX = Math.round(rect.left + rect.width / 2)
+      const sampleY = Math.round(rect.top + rect.height / 2)
+
+      const nav = navRef.current
+      nav.style.pointerEvents = "none"
+      const elementUnderNav = document.elementFromPoint(sampleX, sampleY) as HTMLElement | null
+      nav.style.pointerEvents = ""
+
+      if (!elementUnderNav) return
+
+      let current: HTMLElement | null = elementUnderNav
+      let sampledColor = "rgb(0, 0, 0)"
+
+      while (current && current !== document.body) {
+        const color = window.getComputedStyle(current).backgroundColor
+        if (color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent") {
+          sampledColor = color
+          break
+        }
+        current = current.parentElement
+      }
+
+      setIsLightBackgroundUnderNav(getBrightness(sampledColor) >= 140)
+    }
+
+    updateNavContrast()
+    window.addEventListener("scroll", updateNavContrast, { passive: true })
+    window.addEventListener("resize", updateNavContrast)
+
+    return () => {
+      window.removeEventListener("scroll", updateNavContrast)
+      window.removeEventListener("resize", updateNavContrast)
+    }
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,25 +87,41 @@ export default function Home() {
       sparkCount={10}
       duration={700}
     >
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-black text-white pt-20 md:pt-24">
         {/* Navigation */}
         <motion.nav
+          ref={navRef}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center justify-center px-4 sm:px-6 md:px-12 py-4 md:py-6"
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 md:px-12 py-4 md:py-6"
         >
-          <div className="flex gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider">
-            <Link href="/" className="text-white border-b-2 border-white pb-1">
-              HOME
-            </Link>
-            <Link href="/projects" className="text-white hover:text-green-500 transition">
-              PROJECTS & PRODUCTS
-            </Link>
-            <a href="#contact" className="text-white hover:text-green-500 transition">
-              CONTACT
-            </a>
-          </div>
+          <GlassSurface
+            width="min(94vw, 760px)"
+            height={72}
+            borderRadius={999}
+            backgroundOpacity={0.3}
+            saturation={2}
+            blur={14}
+            borderWidth={0.08}
+            distortionScale={-90}
+            brightness={64}
+            opacity={0.96}
+            mixBlendMode="difference"
+            className="px-3 border border-white/30 shadow-[0_0_24px_rgba(255,255,255,0.15)]"
+          >
+            <div className={`w-full flex items-center justify-center gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider transition-colors ${isLightBackgroundUnderNav ? "text-black" : "text-white"}`}>
+              <Link href="/" className="text-current border-b-2 border-current pb-1">
+                HOME
+              </Link>
+              <Link href="/projects" className="text-current hover:opacity-70 transition-opacity">
+                PROJECTS & PRODUCTS
+              </Link>
+              <a href="#contact" className="text-current hover:opacity-70 transition-opacity">
+                CONTACT
+              </a>
+            </div>
+          </GlassSurface>
         </motion.nav>
 
         {/* Hero Section */}

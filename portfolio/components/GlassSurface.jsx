@@ -3,7 +3,7 @@ import './GlassSurface.css';
 
 const GlassSurface = ({
   children,
-  width = 200,
+  width = '100%',
   height = 80,
   borderRadius = 20,
   borderWidth = 0.07,
