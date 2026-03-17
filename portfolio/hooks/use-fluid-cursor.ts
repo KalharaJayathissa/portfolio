@@ -151,7 +151,7 @@ export default function fluidCursor() {
   }
 
   const createBlob = (radius: number, hueOffset: number): JellyBlob => {
-    const pointCount = 160
+    const pointCount = 0
     const points: JellyPoint[] = []
 
     for (let index = 0; index < pointCount; index += 1) {
