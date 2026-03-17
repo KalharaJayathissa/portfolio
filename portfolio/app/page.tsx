@@ -14,6 +14,7 @@ import ShinyText from "@/components/ShinyText"
 export default function Home() {
   const navRef = useRef<HTMLElement | null>(null)
   const [isLightBackgroundUnderNav, setIsLightBackgroundUnderNav] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,13 +22,27 @@ export default function Home() {
   })
 
   const ANIMATION_RATE = 1
-  const HERO_GRID_SPEED = 0.2 * ANIMATION_RATE
+  const HERO_GRID_SPEED_DESKTOP = 0.2 * ANIMATION_RATE
+  const HERO_GRID_SPEED_MOBILE = 0.08 * ANIMATION_RATE
   const SHINY_TEXT_SPEED = 4 / ANIMATION_RATE
   const PROJECT_GRADIENT_DURATION = 8 / ANIMATION_RATE
   const PROJECT_PULSE_DURATION = 2 / ANIMATION_RATE
   const PROJECT_BORDER_DURATION = 2 / ANIMATION_RATE
   const PROJECT_GLOW_DURATION = 2 / ANIMATION_RATE
   const PROJECT_FLOAT_DURATION = 3 / ANIMATION_RATE
+
+  useEffect(() => {
+    const updateViewport = () => {
+      setIsMobileViewport(window.innerWidth < 640)
+    }
+
+    updateViewport()
+    window.addEventListener("resize", updateViewport)
+
+    return () => {
+      window.removeEventListener("resize", updateViewport)
+    }
+  }, [])
 
   useEffect(() => {
     const getBrightness = (rgb: string) => {
@@ -99,17 +114,17 @@ export default function Home() {
       sparkCount={10}
       duration={700}
     >
-      <div className="min-h-screen bg-black text-white pt-20 md:pt-24">
+      <div className="min-h-screen bg-black text-white pt-20 md:pt-24 overflow-x-hidden">
         {/* Navigation */}
         <motion.nav
           ref={navRef}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 sm:px-6 md:px-12 py-4 md:py-6"
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-2 sm:px-6 md:px-12 py-4 md:py-6"
         >
           <GlassSurface
-            width="min(94vw, 760px)"
+            width="100%"
             height={72}
             borderRadius={999}
             backgroundOpacity={0.3}
@@ -120,9 +135,9 @@ export default function Home() {
             brightness={64}
             opacity={0.96}
             mixBlendMode="difference"
-            className="px-3 border border-white/30 shadow-[0_0_24px_rgba(255,255,255,0.15)]"
+            className="w-full max-w-[760px] px-3 border border-white/30 shadow-[0_0_24px_rgba(255,255,255,0.15)]"
           >
-            <div className={`w-full flex items-center justify-center gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider transition-colors ${isLightBackgroundUnderNav ? "text-black" : "text-white"}`}>
+            <div className={`w-full flex items-center justify-center flex-wrap sm:flex-nowrap gap-3 sm:gap-8 md:gap-12 text-[10px] sm:text-sm tracking-wider transition-colors ${isLightBackgroundUnderNav ? "text-black" : "text-white"}`}>
               <Link href="/" className="text-current border-b-2 border-current pb-1">
                 HOME
               </Link>
@@ -139,14 +154,14 @@ export default function Home() {
         {/* Hero Section */}
         <div className="relative overflow-hidden flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
           <ShapeGrid
-            speed={HERO_GRID_SPEED}
+            speed={isMobileViewport ? HERO_GRID_SPEED_MOBILE : HERO_GRID_SPEED_DESKTOP}
             squareSize={40}
             direction="diagonal"
-            borderColor="#271E37"
+            borderColor="#4b3a69"
             hoverFillColor="#222222"
             shape="square"
             hoverTrailAmount={0}
-            className="absolute inset-0 z-0 opacity-40"
+            className="absolute inset-0 z-0 pointer-events-none opacity-30 sm:opacity-35 lg:opacity-40"
           />
           {/* View Counter - Top Right */}
           <motion.div
@@ -159,14 +174,14 @@ export default function Home() {
           </motion.div>
 
           {/* Left Content */}
-          <div className="relative z-10 flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-6 sm:px-10 lg:px-16 pt-20 lg:py-8">
+          <div className="relative z-10 flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-5 sm:px-10 lg:px-20 xl:px-24 pt-12 sm:pt-16 lg:py-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
-              className="max-w-lg"
+              className="max-w-md sm:max-w-lg lg:ml-6"
             >
-              <h1 className="mb-6 lg:mb-8 leading-tight text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <h1 className="mb-5 lg:mb-8 leading-tight text-3xl sm:text-5xl lg:text-6xl font-bold">
                 <span className="block">
                   <ShinyText
                     text="K"
@@ -237,7 +252,7 @@ export default function Home() {
                   />
                 </span>
               </h1>
-              <p className="text-white text-sm sm:text-base leading-relaxed font-semibold">
+              <p className="text-white text-xs sm:text-base leading-relaxed font-semibold">
                 An Engineer & Computer scientist<br />
                 passionate in Linux, back end systems<br />
                 designing and database systems.
@@ -250,15 +265,15 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="relative z-10 flex-1 flex items-end justify-center pb-0 mt-8 lg:mt-0"
+            className="relative z-10 flex-1 flex items-end justify-center lg:justify-start pb-0 mt-6 lg:mt-0 lg:pl-12 xl:pl-24"
           >
-            <div className="relative w-64 sm:w-80 lg:w-96 h-[50vh] sm:h-[60vh] lg:h-[calc(100vh-80px)]">
+            <div className="relative w-72 sm:w-80 lg:w-96 h-[52vh] sm:h-[60vh] lg:h-[calc(100vh-80px)]">
               <Image src="/me.png" alt="me" fill className="object-cover object-top" />
             </div>
           </motion.div>
 
           {/* Right Corner - Full Height Stylish Button */}
-          <div className="relative z-20 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-32 h-28 lg:h-auto mt-4 lg:mt-0">
+          <div className="relative z-20 lg:fixed lg:right-0 lg:top-0 lg:bottom-0 lg:z-40 w-full lg:w-32 h-20 sm:h-24 lg:h-screen mt-2 sm:mt-4 lg:mt-0">
             <Link
               href="/projects"
               className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden"
@@ -288,7 +303,7 @@ export default function Home() {
               />
 
               {/* Content */}
-              <div className="relative h-full flex flex-row lg:flex-col items-center justify-center p-4 gap-4 lg:gap-0 transform group-hover:scale-105 transition-transform duration-500">
+              <div className="relative h-full flex flex-row lg:flex-col items-center justify-center p-3 sm:p-4 gap-3 sm:gap-4 lg:gap-0 transform group-hover:scale-105 transition-transform duration-500">
                 {/* Icon */}
                 <div className="mb-0 lg:mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"
                   style={{ animation: `float ${PROJECT_FLOAT_DURATION}s ease-in-out infinite` }}>
