@@ -8,6 +8,8 @@ import ViewCounter from "./components/viewcounter"
 import ClickSpark from '../components/ClickSpark';
 import GlassSurface from "@/components/GlassSurface"
 import ShapeGrid from "@/components/ShapeGrid"
+import ShinyText from "@/components/ShinyText"
+
 
 export default function Home() {
   const navRef = useRef<HTMLElement | null>(null)
@@ -17,6 +19,15 @@ export default function Home() {
     email: "",
     message: ""
   })
+
+  const ANIMATION_RATE = 1
+  const HERO_GRID_SPEED = 0.2 * ANIMATION_RATE
+  const SHINY_TEXT_SPEED = 4 / ANIMATION_RATE
+  const PROJECT_GRADIENT_DURATION = 8 / ANIMATION_RATE
+  const PROJECT_PULSE_DURATION = 2 / ANIMATION_RATE
+  const PROJECT_BORDER_DURATION = 2 / ANIMATION_RATE
+  const PROJECT_GLOW_DURATION = 2 / ANIMATION_RATE
+  const PROJECT_FLOAT_DURATION = 3 / ANIMATION_RATE
 
   useEffect(() => {
     const getBrightness = (rgb: string) => {
@@ -128,7 +139,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="relative overflow-hidden flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
           <ShapeGrid
-            speed={0.2}
+            speed={HERO_GRID_SPEED}
             squareSize={40}
             direction="diagonal"
             borderColor="#271E37"
@@ -155,10 +166,76 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
               className="max-w-lg"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
-                <span className="text-green-500">K</span>ALHARA
-                <br />
-                JAYA<span className="text-green-500">Th</span>ISSA
+              <h1 className="mb-6 lg:mb-8 leading-tight text-4xl sm:text-5xl lg:text-6xl font-bold">
+                <span className="block">
+                  <ShinyText
+                    text="K"
+                    speed={SHINY_TEXT_SPEED}
+                    delay={0}
+                    color="#22c55e"
+                    shineColor="#86efac"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                    className="inline-block"
+                  />
+                  <ShinyText
+                    text="ALHARA"
+                    speed={SHINY_TEXT_SPEED}
+                    delay={0}
+                    color="#8a8a8a"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                    className="inline-block"
+                  />
+                </span>
+                <span className="block">
+                  <ShinyText
+                    text="JAYA"
+                    speed={SHINY_TEXT_SPEED}
+                    delay={0.25}
+                    color="#8a8a8a"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                    className="inline-block"
+                  />
+                  <ShinyText
+                    text="Th"
+                    speed={SHINY_TEXT_SPEED}
+                    delay={0.25}
+                    color="#22c55e"
+                    shineColor="#86efac"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                    className="inline-block"
+                  />
+                  <ShinyText
+                    text="ISSA"
+                    speed={SHINY_TEXT_SPEED}
+                    delay={0.4}
+                    color="#8a8a8a"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                    className="inline-block"
+                  />
+                </span>
               </h1>
               <p className="text-white text-sm sm:text-base leading-relaxed font-semibold">
                 An Engineer & Computer scientist<br />
@@ -187,20 +264,20 @@ export default function Home() {
               className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden"
               style={{
                 backgroundSize: '200% 200%',
-                animation: 'gradientShift 8s ease infinite, pulse 2s ease-in-out infinite'
+                animation: `gradientShift ${PROJECT_GRADIENT_DURATION}s ease infinite, pulse ${PROJECT_PULSE_DURATION}s ease-in-out infinite`
               }}
             >
               {/* Pulsing border effect at rest */}
               <div className="absolute inset-0 border-4 border-white/0 group-hover:border-white/0 transition-all duration-500"
                 style={{
-                  animation: 'borderPulse 2s ease-in-out infinite',
+                  animation: `borderPulse ${PROJECT_BORDER_DURATION}s ease-in-out infinite`,
                   animationPlayState: 'running'
                 }}
               />
 
               {/* Animated glow effect on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ animation: 'glow 2s ease-in-out infinite' }} />
+                style={{ animation: `glow ${PROJECT_GLOW_DURATION}s ease-in-out infinite` }} />
 
               {/* Texture overlay */}
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300"
@@ -214,7 +291,7 @@ export default function Home() {
               <div className="relative h-full flex flex-row lg:flex-col items-center justify-center p-4 gap-4 lg:gap-0 transform group-hover:scale-105 transition-transform duration-500">
                 {/* Icon */}
                 <div className="mb-0 lg:mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"
-                  style={{ animation: 'float 3s ease-in-out infinite' }}>
+                  style={{ animation: `float ${PROJECT_FLOAT_DURATION}s ease-in-out infinite` }}>
                   <svg className="w-10 h-10 lg:w-12 lg:h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
                   </svg>
