@@ -36,8 +36,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 gap-4">
-      <h1 className="text-2xl font-bold">Go + Next.js WebSocket</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8 gap-4">
+      <h1 className="text-xl sm:text-2xl font-bold text-center">Go + Next.js WebSocket</h1>
 
       <div className="border p-4 h-64 w-full max-w-md overflow-y-auto bg-gray-100 text-black rounded">
         {messages.map((msg, i) => (
@@ -45,10 +45,10 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2 w-full max-w-md">
         <input
             // Added "bg-white" here so you can see what you type!
-            className="border p-2 rounded text-black bg-white" 
+            className="border p-2 rounded text-black bg-white w-full" 
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -56,7 +56,7 @@ export default function Home() {
             />
         <button 
           onClick={sendMessage}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 sm:w-auto w-full"
         >
           Send
         </button>

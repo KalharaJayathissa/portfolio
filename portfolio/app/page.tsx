@@ -41,9 +41,9 @@ export default function Home() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center justify-center px-12 py-6"
+          className="flex items-center justify-center px-4 sm:px-6 md:px-12 py-4 md:py-6"
         >
-          <div className="flex gap-12 text-sm tracking-wider">
+          <div className="flex gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider">
             <Link href="/" className="text-white border-b-2 border-white pb-1">
               HOME
             </Link>
@@ -57,31 +57,31 @@ export default function Home() {
         </motion.nav>
 
         {/* Hero Section */}
-        <div className="flex h-[calc(100vh-80px)] relative">
+        <div className="relative flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
           {/* View Counter - Top Right */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-8 right-40 z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-10"
           >
             <ViewCounter pageName="home" />
           </motion.div>
 
           {/* Left Content */}
-          <div className="flex-1 flex flex-col justify-center px-16 py-8">
+          <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-6 sm:px-10 lg:px-16 pt-20 lg:py-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
               className="max-w-lg"
             >
-              <h1 className="text-6xl font-bold mb-8 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
                 <span className="text-green-500">K</span>ALHARA
                 <br />
                 JAYA<span className="text-green-500">Th</span>ISSA
               </h1>
-              <p className="text-white text-base leading-relaxed font-semibold">
+              <p className="text-white text-sm sm:text-base leading-relaxed font-semibold">
                 An Engineer & Computer scientist<br />
                 passionate in Linux, back end systems<br />
                 designing and database systems.
@@ -94,15 +94,15 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="flex-1 flex items-end justify-center pb-0"
+            className="flex-1 flex items-end justify-center pb-0 mt-8 lg:mt-0"
           >
-            <div className="relative w-96 h-[calc(100vh-80px)]">
+            <div className="relative w-64 sm:w-80 lg:w-96 h-[50vh] sm:h-[60vh] lg:h-[calc(100vh-80px)]">
               <Image src="/me.png" alt="me" fill className="object-cover object-top" />
             </div>
           </motion.div>
 
           {/* Right Corner - Full Height Stylish Button */}
-          <div className="absolute right-0 top-0 bottom-0 w-32 z-20">
+          <div className="relative lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-32 h-28 lg:h-auto z-20 mt-4 lg:mt-0">
             <Link
               href="/projects"
               className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden"
@@ -132,16 +132,16 @@ export default function Home() {
               />
 
               {/* Content */}
-              <div className="relative h-full flex flex-col items-center justify-center p-4 transform group-hover:scale-105 transition-transform duration-500">
+              <div className="relative h-full flex flex-row lg:flex-col items-center justify-center p-4 gap-4 lg:gap-0 transform group-hover:scale-105 transition-transform duration-500">
                 {/* Icon */}
-                <div className="mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"
+                <div className="mb-0 lg:mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"
                   style={{ animation: 'float 3s ease-in-out infinite' }}>
-                  <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 lg:w-12 lg:h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
                   </svg>
                 </div>
 
-                <div className="text-black text-base font-bold tracking-[0.2em] text-center writing-mode-vertical transform rotate-0 whitespace-normal leading-tight">
+                <div className="text-black text-sm lg:text-base font-bold tracking-[0.2em] text-center writing-mode-vertical transform rotate-0 whitespace-normal leading-tight">
                   PROJECTS
                   <br />
                   <span className="text-xl">&</span>
@@ -150,7 +150,7 @@ export default function Home() {
                 </div>
 
                 {/* Arrow indicator */}
-                <div className="mt-6 transform group-hover:translate-x-1 transition-transform duration-300">
+                <div className="mt-0 lg:mt-6 transform group-hover:translate-x-1 transition-transform duration-300">
                   <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
@@ -166,7 +166,7 @@ export default function Home() {
         </div>
 
         {/* Territory Section - Timeline */}
-        <div id="territory" className="min-h-screen bg-gray-50 text-black py-20 px-8">
+        <div id="territory" className="min-h-screen bg-gray-50 text-black py-14 md:py-20 px-4 sm:px-6 md:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Title */}
             <motion.h2
@@ -174,7 +174,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl font-bold mb-16 flex items-center gap-3"
+              className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 flex items-center gap-3"
             >
               <span className="text-2xl">📍</span> TERRITORY
             </motion.h2>
@@ -182,31 +182,31 @@ export default function Home() {
             {/* Timeline */}
             <div className="relative">
               {/* Vertical Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-800"></div>
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-800"></div>
 
               {/* Timeline Items */}
-              <div className="space-y-24">
+              <div className="space-y-10 md:space-y-24">
                 {/* Item 1 - Right */}
                 <motion.div
                   initial={{ opacity: 0, x: 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="relative flex justify-end"
+                  className="relative flex justify-start md:justify-end"
                 >
-                  <div className="w-5/12">
+                  <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
-                      <div className="absolute -left-2 top-0 bg-green-500 text-black px-3 py-1 text-xs font-bold tracking-wider">
+                      <div className="inline-block md:absolute md:-left-2 md:top-0 bg-green-500 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2021 - PRESENT
                       </div>
-                      <h3 className="text-xl font-bold mt-6 mb-3">LEAD COOK @ GRAY MATTER</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">LEAD COOK @ GRAY MATTER</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
                         Orchestrating large-scale deployments and managing the purity of the codebase. Scaled operations to 50k DAU.
                       </p>
                     </div>
                   </div>
                   {/* Green Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-8">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8">
                     <div className="w-5 h-5 bg-green-500 rounded-full border-4 border-gray-50"></div>
                   </div>
                 </motion.div>
@@ -219,19 +219,19 @@ export default function Home() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="relative flex justify-start"
                 >
-                  <div className="w-5/12">
+                  <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
-                      <div className="absolute -right-2 top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
+                      <div className="inline-block md:absolute md:-right-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2019 - 2021
                       </div>
-                      <h3 className="text-xl font-bold mt-6 mb-3">DISTRIBUTOR @ LOS POLLOS</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">DISTRIBUTOR @ LOS POLLOS</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
                         Frontend development for logistics systems. Ensured pixel-perfect delivery on a strict schedule.
                       </p>
                     </div>
                   </div>
                   {/* Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-8">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8">
                     <div className="w-5 h-5 bg-gray-800 rounded-full border-4 border-gray-50"></div>
                   </div>
                 </motion.div>
@@ -242,21 +242,21 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="relative flex justify-end"
+                  className="relative flex justify-start md:justify-end"
                 >
-                  <div className="w-5/12">
+                  <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
-                      <div className="absolute -left-2 top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
+                      <div className="inline-block md:absolute md:-left-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2017 - 2019
                       </div>
-                      <h3 className="text-xl font-bold mt-6 mb-3">FREELANCE CHEMIST</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">FREELANCE CHEMIST</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
                         Building small-batch websites and applications for local businesses. High purity standards from day one.
                       </p>
                     </div>
                   </div>
                   {/* Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-8">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8">
                     <div className="w-5 h-5 bg-gray-800 rounded-full border-4 border-gray-50"></div>
                   </div>
                 </motion.div>
@@ -266,7 +266,7 @@ export default function Home() {
         </div>
 
         {/* Contact Section */}
-        <div id="contact" className="min-h-screen bg-black flex flex-col items-center justify-center px-8 py-16">
+        <div id="contact" className="min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-14 md:py-16">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -275,12 +275,12 @@ export default function Home() {
             className="max-w-md w-full"
           >
             {/* Title */}
-            <h2 className="text-5xl font-bold text-center mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
               BETTER CALL <span className="bg-green-500 text-black px-2">ME</span>
             </h2>
 
             {/* Subtitle */}
-            <p className="text-center text-gray-300 mb-12">
+            <p className="text-center text-gray-300 mb-8 md:mb-12">
               Ready to cook? Let&apos;s discuss your territory.
             </p>
 
@@ -349,9 +349,9 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-lg tracking-wider"
+                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider"
               >
-                <Image src="/flask.png" alt="flask" width={44} height={44} className="inline-block -translate-y-1" />
+                <Image src="/flask.png" alt="flask" width={32} height={32} className="inline-block -translate-y-1 md:w-[44px] md:h-[44px]" />
                 LET&apos;S COOK
               </motion.button>
             </motion.form>
@@ -359,12 +359,12 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-[#1a1a1a] border-t-4 border-green-500 py-6 px-12">
-          <div className="flex items-center justify-between">
+        <footer className="bg-[#1a1a1a] border-t-4 border-green-500 py-6 px-4 sm:px-6 md:px-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
             <p className="text-sm">
               <span className="text-green-500">[Co]</span> pyright © 2023
             </p>
-            <div className="flex gap-8 text-sm font-bold tracking-wider">
+            <div className="flex flex-wrap justify-center gap-5 md:gap-8 text-sm font-bold tracking-wider">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
                 GITHUB
               </a>

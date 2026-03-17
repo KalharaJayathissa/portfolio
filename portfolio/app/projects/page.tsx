@@ -47,12 +47,12 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex items-center justify-between px-12 py-6 border-b border-green-500/20"
+                className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 px-4 sm:px-6 md:px-12 py-4 md:py-6 border-b border-green-500/20"
             >
-                <Link href="/" className="text-2xl font-bold hover:text-green-500 transition">
+                <Link href="/" className="text-xl md:text-2xl font-bold hover:text-green-500 transition">
                     <span className="text-green-500">K</span>ALHARA
                 </Link>
-                <div className="flex gap-12 text-sm tracking-wider">
+                <div className="flex gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider">
                     <Link href="/" className="text-white hover:text-green-500 transition">
                         HOME
                     </Link>
@@ -71,13 +71,13 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="py-20 px-12"
+                className="py-12 md:py-20 px-4 sm:px-6 md:px-12"
             >
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-7xl font-bold mb-6">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
                         PROJECTS <span className="text-green-500">&</span> PRODUCTS
                     </h1>
-                    <p className="text-xl text-gray-300 max-w-2xl">
+                    <p className="text-base md:text-xl text-gray-300 max-w-2xl">
                         A collection of high-performance systems and applications built with precision and attention to detail.
                     </p>
                 </div>
@@ -89,13 +89,13 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="px-12 pb-20"
+                className="px-4 sm:px-6 md:px-12 pb-14 md:pb-20"
             >
                 <motion.div
                     variants={staggerContainer}
                     initial="initial"
                     animate="animate"
-                    className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8"
                 >
                     {projects.map((project) => (
                         <motion.div
@@ -111,13 +111,13 @@ export default function ProjectsPage() {
                             <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:via-green-500/5 group-hover:to-transparent transition-all duration-500" />
 
                             {/* Content */}
-                            <div className="relative p-8">
+                            <div className="relative p-6 md:p-8">
                                 {/* Icon/Image Placeholder */}
-                                <div className="w-16 h-16 mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center">
+                                <div className="w-14 h-14 md:w-16 md:h-16 mb-5 md:mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center">
                                     <span className="text-3xl">🧪</span>
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-3 group-hover:text-green-500 transition">
+                                <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-green-500 transition">
                                     {project.title}
                                 </h3>
 
@@ -155,11 +155,11 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex justify-center pb-20"
+                className="flex justify-center pb-14 md:pb-20 px-4"
             >
                 <Link
                     href="/"
-                    className="group relative px-8 py-4 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-lg tracking-wider overflow-hidden hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300"
+                    className="group relative px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-base md:text-lg tracking-wider overflow-hidden hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300"
                 >
                     <span className="relative z-10 flex items-center gap-3">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
