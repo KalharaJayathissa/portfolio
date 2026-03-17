@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import ViewCounter from "./components/viewcounter"
 import ClickSpark from '../components/ClickSpark';
 import GlassSurface from "@/components/GlassSurface"
+import ShapeGrid from "@/components/ShapeGrid"
 
 export default function Home() {
   const navRef = useRef<HTMLElement | null>(null)
@@ -125,19 +126,29 @@ export default function Home() {
         </motion.nav>
 
         {/* Hero Section */}
-        <div className="relative flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
+        <div className="relative overflow-hidden flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
+          <ShapeGrid
+            speed={0.2}
+            squareSize={40}
+            direction="diagonal"
+            borderColor="#271E37"
+            hoverFillColor="#222222"
+            shape="square"
+            hoverTrailAmount={0}
+            className="absolute inset-0 z-0 opacity-40"
+          />
           {/* View Counter - Top Right */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-20"
           >
             <ViewCounter pageName="home" />
           </motion.div>
 
           {/* Left Content */}
-          <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-6 sm:px-10 lg:px-16 pt-20 lg:py-8">
+          <div className="relative z-10 flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-6 sm:px-10 lg:px-16 pt-20 lg:py-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -162,7 +173,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="flex-1 flex items-end justify-center pb-0 mt-8 lg:mt-0"
+            className="relative z-10 flex-1 flex items-end justify-center pb-0 mt-8 lg:mt-0"
           >
             <div className="relative w-64 sm:w-80 lg:w-96 h-[50vh] sm:h-[60vh] lg:h-[calc(100vh-80px)]">
               <Image src="/me.png" alt="me" fill className="object-cover object-top" />
@@ -170,7 +181,7 @@ export default function Home() {
           </motion.div>
 
           {/* Right Corner - Full Height Stylish Button */}
-          <div className="relative lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-32 h-28 lg:h-auto z-20 mt-4 lg:mt-0">
+          <div className="relative z-20 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-32 h-28 lg:h-auto mt-4 lg:mt-0">
             <Link
               href="/projects"
               className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden"
