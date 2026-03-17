@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AnimatePresence } from "framer-motion"
 import FluidCursor from "@/components/FluidCursor"
+import SplashCursor from "@/components/SplashCursor"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -19,7 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <FluidCursor />
+        {/* <FluidCursor /> */}
+        <SplashCursor />
         <AnimatePresence mode="wait">
           {children}
         </AnimatePresence>
