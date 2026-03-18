@@ -10,6 +10,7 @@ import GlassSurface from "@/components/GlassSurface"
 import ShapeGrid from "@/components/ShapeGrid"
 import ShinyText from "@/components/ShinyText"
 import ContextMenu from "@/components/ContextMenu"
+import AboutSection from "@/components/AboutSection"
 
 
 export default function Home() {
@@ -337,6 +338,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        {/* About Me Section */}
+        <AboutSection />
 
         {/* Territory Section - Timeline */}
         <div id="territory" className="min-h-screen bg-gray-50 text-black py-14 md:py-20 px-4 sm:px-6 md:px-8">
