@@ -26,13 +26,65 @@ const subsections = [
     content: (
       <>
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">EDUCATION</h3>
-        <div className="space-y-4 sm:space-y-6">
-          <div>
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">Bachelor of Science in Computer Science</h4>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">University Name • 2022 - 2024</p>
-            <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-              Relevant coursework: Data Structures, Algorithms, Operating Systems, Database Management, Network Security
-            </p>
+        <div className="space-y-4 sm:space-y-5">
+          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                  Department of Computer Science and Engineering, University of Moratuwa
+                </h4>
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Entered the Department of CSE in 2024 by securing 3.85 (as the 150th) of SGPA from first semester examination.
+                </p>
+              </div>
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
+                CSE Logo
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                  Faculty of Engineering, University of Moratuwa
+                </h4>
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Got selected for the course B.Sc Engineering Honours.
+                </p>
+              </div>
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
+                Logo Slot
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">A/L</h4>
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Passed with 2.1400 Z-score in Physical Science stream in 2022 (2023) A/L examination.
+                </p>
+              </div>
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
+                Logo Slot
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">O/L</h4>
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Secured 9 A's in 2019.
+                </p>
+              </div>
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
+                Logo Slot
+              </div>
+            </div>
           </div>
         </div>
       </>
