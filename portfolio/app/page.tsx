@@ -9,6 +9,7 @@ import ClickSpark from '../components/ClickSpark';
 import GlassSurface from "@/components/GlassSurface"
 import ShapeGrid from "@/components/ShapeGrid"
 import ShinyText from "@/components/ShinyText"
+import ContextMenu from "@/components/ContextMenu"
 
 
 export default function Home() {
@@ -114,6 +115,7 @@ export default function Home() {
       sparkCount={10}
       duration={700}
     >
+      <ContextMenu />
       <div className="min-h-screen bg-black text-white pt-20 md:pt-24 overflow-x-hidden">
         {/* Navigation */}
         <motion.nav
@@ -253,9 +255,9 @@ export default function Home() {
                 </span>
               </h1>
               <p className="text-white text-xs sm:text-base leading-relaxed font-semibold">
-                An Engineer & Computer scientist<br />
-                passionate in Linux, back end systems<br />
-                designing and database systems.
+                Engineer and computer science enthusiast focused on<br />
+                Linux, backend systems, security tooling, and<br />
+                building practical full-stack products.
               </p>
             </motion.div>
           </div>
@@ -347,7 +349,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 flex items-center gap-3"
             >
-              <span className="text-2xl">📍</span> TERRITORY
+              <span className="text-2xl">📍</span> JOURNEY
             </motion.h2>
 
             {/* Timeline */}
@@ -368,11 +370,11 @@ export default function Home() {
                   <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
                       <div className="inline-block md:absolute md:-left-2 md:top-0 bg-green-500 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2021 - PRESENT
+                        2025 - PRESENT
                       </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">LEAD COOK @ GRAY MATTER</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">FULL-STACK & SYSTEMS PROJECTS</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
-                        Orchestrating large-scale deployments and managing the purity of the codebase. Scaled operations to 50k DAU.
+                        Building and maintaining applications across TypeScript, Python, C++, Kotlin, and Go with a focus on reliability, performance, and clear developer workflows.
                       </p>
                     </div>
                   </div>
@@ -393,11 +395,11 @@ export default function Home() {
                   <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
                       <div className="inline-block md:absolute md:-right-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2019 - 2021
+                        2025
                       </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">DISTRIBUTOR @ LOS POLLOS</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">INPIRE FRONTEND PLATFORM</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
-                        Frontend development for logistics systems. Ensured pixel-perfect delivery on a strict schedule.
+                        Contributed to a role-based exam management web app using React, TypeScript, Tailwind, and Supabase with admin, marker, and student workflows.
                       </p>
                     </div>
                   </div>
@@ -418,11 +420,11 @@ export default function Home() {
                   <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
                       <div className="inline-block md:absolute md:-left-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2017 - 2019
+                        2025
                       </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">FREELANCE CHEMIST</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">SECURITY & AUTOMATION BUILDS</h3>
                       <p className="text-gray-700 text-sm leading-relaxed">
-                        Building small-batch websites and applications for local businesses. High purity standards from day one.
+                        Developed projects like a C++ file encryptor (AES/OpenSSL + Qt) and a Python Telegram media bot with database-backed workflows.
                       </p>
                     </div>
                   </div>
@@ -447,12 +449,12 @@ export default function Home() {
           >
             {/* Title */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-              BETTER CALL <span className="bg-green-500 text-black px-2">ME</span>
+              LET&apos;S <span className="bg-green-500 text-black px-2">CONNECT</span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-center text-gray-300 mb-8 md:mb-12">
-              Ready to cook? Let&apos;s discuss your territory.
+              Have a project or collaboration in mind? Send a message.
             </p>
 
             {/* Contact Form */}
@@ -467,7 +469,7 @@ export default function Home() {
               {/* Subject Name */}
               <div>
                 <label htmlFor="name" className="block text-sm font-bold mb-2 tracking-wider">
-                  SAY YOUR NAME
+                  YOUR NAME
                 </label>
                 <input
                   type="text"
@@ -475,7 +477,7 @@ export default function Home() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Walter White"
+                  placeholder="Jane Doe"
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition"
                   required
                 />
@@ -484,7 +486,7 @@ export default function Home() {
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-bold mb-2 tracking-wider">
-                  COORDINATES (EMAIL)
+                  EMAIL
                 </label>
                 <input
                   type="email"
@@ -492,7 +494,7 @@ export default function Home() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="heisenberg@blue.sky"
+                  placeholder="jane@example.com"
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition"
                   required
                 />
@@ -501,14 +503,14 @@ export default function Home() {
               {/* Message */}
               <div>
                 <label htmlFor="message" className="block text-sm font-bold mb-2 tracking-wider">
-                  THE PLAN
+                  MESSAGE
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="We need to cook..."
+                  placeholder="Tell me a bit about your project..."
                   rows={5}
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition resize-none"
                   required
@@ -523,7 +525,7 @@ export default function Home() {
                 className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider"
               >
                 <Image src="/flask.png" alt="flask" width={32} height={32} className="inline-block -translate-y-1 md:w-[44px] md:h-[44px]" />
-                LET&apos;S COOK
+                SEND MESSAGE
               </motion.button>
             </motion.form>
           </motion.div>
@@ -533,17 +535,17 @@ export default function Home() {
         <footer className="bg-[#1a1a1a] border-t-4 border-green-500 py-6 px-4 sm:px-6 md:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
             <p className="text-sm">
-              <span className="text-green-500">[Co]</span> pyright © 2023
+              <span className="text-green-500">©</span> 2026 Kalhara Jayathissa
             </p>
             <div className="flex flex-wrap justify-center gap-5 md:gap-8 text-sm font-bold tracking-wider">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
+              <a href="https://github.com/KalharaJayathissa" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
                 GITHUB
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
-                TWITTER
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
+              <a href="https://www.linkedin.com/in/kalharajy/" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
                 LINKEDIN
+              </a>
+              <a href="https://github.com/KalharaJayathissa/portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
+                PORTFOLIO
               </a>
             </div>
           </div>

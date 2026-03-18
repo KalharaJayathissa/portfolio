@@ -9,24 +9,35 @@ export default function ProjectsPage() {
     const projects = [
         {
             id: 1,
-            title: "BLUE SKY SYSTEMS",
-            description: "Enterprise-grade chemical management platform with real-time tracking and analytics. Built with Next.js, PostgreSQL, and Redis.",
-            tags: ["Next.js", "PostgreSQL", "Redis", "TypeScript"],
-            image: "/project1.png"
+            title: "INSPIRE FRONTEND",
+            description: "Modern React + TypeScript frontend for A/L exam management with student, marker, and admin workflows.",
+            tags: ["React", "TypeScript", "Vite", "Tailwind", "Supabase"],
+            icon: "📊",
+            url: "https://github.com/KalharaJayathissa/inspire-frontend"
         },
         {
             id: 2,
-            title: "LOS POLLOS HERMANOS",
-            description: "Full-stack logistics and inventory management system. Scaled to handle 100k+ daily transactions with 99.9% uptime.",
-            tags: ["React", "Node.js", "MongoDB", "Docker"],
-            image: "/project2.png"
+            title: "ENCRYPTOR-CPP",
+            description: "C++ file encryption toolkit with Qt GUI and CLI variants, including AES-256-CBC mode with OpenSSL.",
+            tags: ["C++", "Qt", "OpenSSL", "Linux"],
+            icon: "🔐",
+            url: "https://github.com/KalharaJayathissa/encryptor-cpp"
         },
         {
             id: 3,
-            title: "GRAY MATTER TECH",
-            description: "Advanced data pipeline and ETL system for processing large-scale chemical analysis data. High-performance architecture.",
-            tags: ["Python", "Apache Kafka", "Spark", "AWS"],
-            image: "/project3.png"
+            title: "TG_VIDEOS_BOT",
+            description: "Telegram bot application to send and store videos with MongoDB-backed persistence and multiple runtime modes.",
+            tags: ["Python", "Telegram Bot API", "MongoDB", "Docker"],
+            icon: "🤖",
+            url: "https://github.com/KalharaJayathissa/tg_videos_bot"
+        },
+        {
+            id: 4,
+            title: "AURA WEB PAGE",
+            description: "React + Vite web interface for the Aura system, built and deployed as a production-facing frontend.",
+            tags: ["React", "JavaScript", "Vite", "CSS"],
+            icon: "🌐",
+            url: "https://github.com/KalharaJayathissa/AuraWebPage"
         }
     ]
 
@@ -78,7 +89,7 @@ export default function ProjectsPage() {
                         PROJECTS <span className="text-green-500">&</span> PRODUCTS
                     </h1>
                     <p className="text-base md:text-xl text-gray-300 max-w-2xl">
-                        A collection of high-performance systems and applications built with precision and attention to detail.
+                        A selection of public projects from my GitHub profile across web development, automation, and security tooling.
                     </p>
                 </div>
             </motion.div>
@@ -114,7 +125,7 @@ export default function ProjectsPage() {
                             <div className="relative p-6 md:p-8">
                                 {/* Icon/Image Placeholder */}
                                 <div className="w-14 h-14 md:w-16 md:h-16 mb-5 md:mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center">
-                                    <span className="text-3xl">🧪</span>
+                                    <span className="text-3xl">{project.icon}</span>
                                 </div>
 
                                 <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-green-500 transition">
@@ -138,11 +149,17 @@ export default function ProjectsPage() {
                                 </div>
 
                                 {/* Hover Indicator */}
-                                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <a
+                                    href={project.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="absolute bottom-4 right-4 flex items-center gap-2 text-xs font-semibold tracking-wide text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                                >
+                                    VIEW REPO
+                                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
-                                </div>
+                                </a>
                             </div>
                         </motion.div>
                     ))}
