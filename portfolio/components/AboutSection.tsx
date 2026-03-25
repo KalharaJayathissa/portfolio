@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const subsections = [
   {
@@ -305,11 +306,18 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative w-60 sm:w-72 md:w-80 lg:w-96 h-80 lg:h-96"
+          className="relative w-64 sm:w-80 md:w-96 lg:w-[30rem] h-96 lg:h-[30rem]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-lg" />
-          <div className="w-full h-full rounded-lg border-2 border-green-500/30 flex items-center justify-center text-gray-400 bg-black/30">
-            <span className="text-center text-xs sm:text-sm">About Me Image Placeholder</span>
+          <div className="relative w-full h-full rounded-lg border-2 border-green-500/30 overflow-hidden bg-black/30">
+            <Image
+              src="/AboutMe.jpg"
+              alt="About Me"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              priority
+            />
           </div>
         </motion.div>
       </div>
@@ -369,6 +377,18 @@ export default function AboutSection() {
             <div key={section.id} className="w-full shrink-0 snap-start px-4">
               <div className="min-h-[62vh] rounded-xl border border-green-500/20 bg-black/40 p-5">
                 {section.content}
+
+                {section.id === "about" && (
+                  <div className="relative w-full max-w-sm h-80 mx-auto mt-6 rounded-lg border-2 border-green-500/30 overflow-hidden bg-black/30">
+                    <Image
+                      src="/AboutMe.jpg"
+                      alt="About Me"
+                      fill
+                      className="object-cover object-[center_65%]"
+                      sizes="100vw"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           ))}
