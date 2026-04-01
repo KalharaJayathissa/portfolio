@@ -398,9 +398,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-4xl font-bold mb-10 md:mb-16 flex items-center gap-3"
+              className="text-3xl md:text-4xl font-bold mb-10 md:mb-16"
             >
-              <span className="text-2xl">📍</span> JOURNEY
+              JOURNEY
             </motion.h2>
 
             {/* Timeline */}
@@ -421,11 +421,14 @@ export default function Home() {
                   <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
                       <div className="inline-block md:absolute md:-left-2 md:top-0 bg-green-500 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2025 - PRESENT
+                        MAR 2024 - PRESENT
                       </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">FULL-STACK & SYSTEMS PROJECTS</h3>
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">UNDERGRADUATE</h3>
+                      <p className="text-gray-700 text-sm leading-relaxed mb-2">
+                        Department of Computer Science &amp; Engineering, University of Moratuwa · Full-time
+                      </p>
                       <p className="text-gray-700 text-sm leading-relaxed">
-                        Building and maintaining applications across TypeScript, Python, C++, Kotlin, and Go with a focus on reliability, performance, and clear developer workflows.
+                        Engineering
                       </p>
                     </div>
                   </div>
@@ -446,36 +449,20 @@ export default function Home() {
                   <div className="w-full md:w-5/12">
                     <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
                       <div className="inline-block md:absolute md:-right-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2025
+                        JUN 2023 - PRESENT
                       </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">INPIRE FRONTEND PLATFORM</h3>
-                      <p className="text-gray-700 text-sm leading-relaxed">
-                        Contributed to a role-based exam management web app using React, TypeScript, Tailwind, and Supabase with admin, marker, and student workflows.
+                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">A/L TUTOR</h3>
+                      <p className="text-gray-700 text-sm leading-relaxed mb-2">
+                        Self Employed · Part-time
                       </p>
-                    </div>
-                  </div>
-                  {/* Dot */}
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8">
-                    <div className="w-5 h-5 bg-gray-800 rounded-full border-4 border-gray-50"></div>
-                  </div>
-                </motion.div>
-
-                {/* Item 3 - Right */}
-                <motion.div
-                  initial={{ opacity: 0, x: 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="relative flex justify-start md:justify-end"
-                >
-                  <div className="w-full md:w-5/12">
-                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
-                      <div className="inline-block md:absolute md:-left-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
-                        2025
-                      </div>
-                      <h3 className="text-xl font-bold mt-4 md:mt-6 mb-3">SECURITY & AUTOMATION BUILDS</h3>
+                      <p className="text-gray-700 text-sm leading-relaxed mb-2">
+                        A/L Physics &amp; Combined Mathematics Tutor | Sinhala &amp; English Medium
+                      </p>
                       <p className="text-gray-700 text-sm leading-relaxed">
-                        Developed projects like a C++ file encryptor (AES/OpenSSL + Qt) and a Python Telegram media bot with database-backed workflows.
+                        Helping students excel in Advanced Level Physics and Combined Mathematics through clear explanations and structured learning. I provide comprehensive tutoring in both Sinhala and English, focusing on concept mastery, problem-solving techniques, and exam success strategies.
+                      </p>
+                      <p className="text-gray-700 text-sm leading-relaxed mt-2">
+                        Physics Education and Tutoring
                       </p>
                     </div>
                   </div>
