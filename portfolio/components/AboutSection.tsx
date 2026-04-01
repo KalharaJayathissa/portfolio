@@ -98,19 +98,86 @@ const subsections = [
       <>
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">EXPERIENCE</h3>
         <div className="space-y-6 sm:space-y-8">
-          <div>
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">Full-Stack Developer</h4>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">Company • 2024 - Present</p>
-            <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-              Building full-stack applications using TypeScript, React, and Node.js. Optimizing database queries for 40% performance improvement.
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">Undergraduate</h4>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+              Department of Computer Science &amp; Engineering, University of Moratuwa · Full-time
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+              Mar 2024 - Present · 2 yrs 2 mos
+            </p>
+            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-3 font-medium">
+              Engineering
             </p>
           </div>
-          <div>
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">Backend Engineer Intern</h4>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">Tech Startup • 2023 - 2024</p>
-            <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-              Developed microservices using Go and implemented Redis caching strategies. Increased API response time by 50%.
+
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">A/L Tutor</h4>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+              Self Employed · Part-time
             </p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+              Jun 2023 - Present · 2 yrs 11 mos
+            </p>
+            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-3 font-medium">
+              A/L Physics &amp; Combined Mathematics Tutor | Sinhala &amp; English Medium
+            </p>
+            <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+              Helping students excel in Advanced Level Physics and Combined Mathematics through clear explanations and structured learning. I provide comprehensive tutoring in both Sinhala and English, focusing on concept mastery, problem-solving techniques, and exam success strategies.
+            </p>
+            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-4 font-medium">
+              Physics Education and Tutoring
+            </p>
+          </div>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "honours-awards",
+    title: "HONOURS AND AWARDS",
+    content: (
+      <>
+        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">HONOURS AND AWARDS</h3>
+        <div className="space-y-6 sm:space-y-8">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">1st Runner-Up at Cypher 3.0 Hackathon</h4>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                  Issued by IEEE WIE Affinity Group of KDU · Oct 2025
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                  Associated with University of Moratuwa
+                </p>
+                <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Secured 1st Runner-Up position at Cypher 3.0, an inter-university hackathon organized by IEEE WIE Affinity Group of KDU. Competed alongside talented teams, demonstrating strong problem-solving skills, technical expertise, and teamwork in developing innovative technology solutions.
+                </p>
+              </div>
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">SLIoT Challenge 2025 Semi-Finalists</h4>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                  Issued by Department of Computer Science and Engineering, University of Moratuwa · Mar 2025
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                  Associated with University of Moratuwa
+                </p>
+                <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                  Semi-Finalist – Sri Lanka&apos;s Largest IoT Competition. Honored to lead Team AmpArts in Sri Lanka&apos;s premier IoT competition, organized by the Department of Computer Science &amp; Engineering, University of Moratuwa. Our team was selected among the top 13 semi-finalists, showcasing innovation and technical expertise in IoT solutions.
+                </p>
+              </div>
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
+              </div>
+            </div>
           </div>
         </div>
       </>
