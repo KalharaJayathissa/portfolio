@@ -78,6 +78,7 @@ export default function Home() {
   const [isLightBackgroundUnderNav, setIsLightBackgroundUnderNav] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
   const [clientIp, setClientIp] = useState("loading...")
+  const [currentDateTime, setCurrentDateTime] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -138,6 +139,31 @@ export default function Home() {
 
     return () => {
       isMounted = false
+    }
+  }, [])
+
+  useEffect(() => {
+    const formatDateTime = () =>
+      new Intl.DateTimeFormat("en-US", {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }).format(new Date())
+
+    const updateClock = () => {
+      setCurrentDateTime(formatDateTime())
+    }
+
+    updateClock()
+    const interval = window.setInterval(updateClock, 1000)
+
+    return () => {
+      window.clearInterval(interval)
     }
   }, [])
 
@@ -274,6 +300,9 @@ export default function Home() {
             <ViewCounter pageName="home" />
             <p className="text-[10px] sm:text-xs text-white/70 tracking-wider">
               accessing from {clientIp}
+            </p>
+            <p className="text-[10px] sm:text-xs text-white/70 tracking-wider text-right">
+              {currentDateTime}
             </p>
           </motion.div>
 

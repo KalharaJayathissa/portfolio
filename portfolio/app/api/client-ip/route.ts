@@ -15,14 +15,10 @@ async function getRequestIp() {
   for (const value of candidates) {
     if (!value) continue
     const ip = value.split(",")[0]?.trim()
-    if (ip) {
-      if (ip === "::1" || ip === "0:0:0:0:0:0:0:1") return "127.0.0.1"
-      if (ip.startsWith("::ffff:")) return ip.replace("::ffff:", "")
-      return ip
-    }
+    if (ip) return ip
   }
 
-  return "127.0.0.1"
+  return "unknown"
 }
 
 export async function GET() {
