@@ -38,8 +38,8 @@ const subsections = [
                   Entered the Department of CSE in 2024 by securing 3.85 (as the 150th) of SGPA from first semester examination.
                 </p>
               </div>
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
-                CSE Logo
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/cse_logo.jpeg" alt="Department of Computer Science and Engineering logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
@@ -54,8 +54,8 @@ const subsections = [
                   Got selected for the course B.Sc Engineering Honours.
                 </p>
               </div>
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
-                Logo Slot
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
@@ -68,8 +68,8 @@ const subsections = [
                   Passed with 2.1400 Z-score in Physical Science stream in 2022 (2023) A/L examination.
                 </p>
               </div>
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
-                Logo Slot
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
@@ -82,8 +82,8 @@ const subsections = [
                   Secured 9 A's in 2019.
                 </p>
               </div>
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-dashed border-green-400/50 bg-black/20 flex items-center justify-center text-[10px] sm:text-xs text-gray-400 text-center px-2 shrink-0">
-                Logo Slot
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
