@@ -160,19 +160,19 @@ export default function ContextMenu() {
     },
     {
       label: "MEDIUM",
-      href: "https://medium.com",
+      href: "https://medium.com/@kalharajay",
       type: "external",
       icon: <MediumIcon />,
     },
     {
       label: "INSTAGRAM",
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/kalhara.jy",
       type: "external",
       icon: <InstagramIcon />,
     },
     {
       label: "FACEBOOK",
-      href: "https://facebook.com",
+      href: "https://web.facebook.com/kalhara.jayathissa.9",
       type: "external",
       icon: <FacebookIcon />,
     },

@@ -96,9 +96,9 @@ export default function Home() {
   const socialLinks = [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/kalharajy/", icon: <LinkedInIcon /> },
     { label: "GitHub", href: "https://github.com/KalharaJayathissa", icon: <GitHubIcon /> },
-    { label: "Medium", href: "https://medium.com", icon: <MediumIcon /> },
-    { label: "Instagram", href: "https://instagram.com", icon: <InstagramIcon /> },
-    { label: "Facebook", href: "https://facebook.com", icon: <FacebookIcon /> },
+    { label: "Medium", href: "https://medium.com/@kalharajay", icon: <MediumIcon /> },
+    { label: "Instagram", href: "https://www.instagram.com/kalhara.jy", icon: <InstagramIcon /> },
+    { label: "Facebook", href: "https://web.facebook.com/kalhara.jayathissa.9", icon: <FacebookIcon /> },
   ]
 
   useEffect(() => {
