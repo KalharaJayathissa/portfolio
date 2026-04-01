@@ -92,6 +92,73 @@ const subsections = [
     ),
   },
   {
+    id: "licenses-certifications",
+    title: "LICENSES & CERTIFICATIONS",
+    content: (
+      <>
+        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">LICENSES &amp; CERTIFICATIONS</h3>
+        <div className="space-y-6 sm:space-y-8">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                  AWS Academy Graduate - Microservices and CI/CD Pipeline Builder - Training Badge
+                </h4>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                  Amazon Web Services (AWS)
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                  Issued Mar 2026
+                </p>
+                <a
+                  href="https://www.credly.com/badges/66e55e42-43e5-4e18-af0f-ffb248c2d463/linked_in_profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-3 text-green-400 text-xs sm:text-sm md:text-base lg:text-lg hover:text-green-300 transition-all duration-150 active:scale-95"
+                >
+                  View credential
+                </a>
+              </div>
+              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border border-green-400/50 bg-black/20 text-lg sm:text-xl font-bold text-green-300 overflow-hidden shrink-0">
+                AWS
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div className="flex-1">
+                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                  AWS Academy Graduate - Cloud Foundations - Training Badge
+                </h4>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                  Amazon Web Services (AWS)
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                  Issued Feb 2026
+                </p>
+                <a
+                  href="https://www.credly.com/go/ulO0P2wT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-3 text-green-400 text-xs sm:text-sm md:text-base lg:text-lg hover:text-green-300 transition-all duration-150 active:scale-95"
+                >
+                  Show credential
+                </a>
+                <p className="text-gray-500 text-xs sm:text-sm md:text-base lg:text-lg mt-3">
+                  Amazon Web Services (AWS), AWS Identity and Access Management (AWS IAM) and +3 skills
+                </p>
+              </div>
+              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border border-green-400/50 bg-black/20 text-lg sm:text-xl font-bold text-green-300 overflow-hidden shrink-0">
+                AWS
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    ),
+  },
+  {
     id: "experience",
     title: "EXPERIENCE",
     content: (
@@ -225,12 +292,6 @@ const subsections = [
             <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2 sm:mb-4">Skills & Tools</h4>
             <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
               TypeScript, React, Node.js, Go, Python, PostgreSQL, Docker, AWS, Git, Vim, Linux, GraphQL, REST APIs
-            </p>
-          </div>
-          <div>
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2 sm:mb-4">Achievements</h4>
-            <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-              Led 5+ projects from concept to production. Open source contributor with 500+ GitHub stars. Technical speaker at 3 conferences.
             </p>
           </div>
         </div>

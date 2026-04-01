@@ -9,11 +9,11 @@ export default function ProjectsPage() {
     const projects = [
         {
             id: 1,
-            title: "INSPIRE FRONTEND",
-            description: "Modern React + TypeScript frontend for A/L exam management with student, marker, and admin workflows.",
-            tags: ["React", "TypeScript", "Vite", "Tailwind", "Supabase"],
-            icon: "📊",
-            url: "https://github.com/KalharaJayathissa/inspire-frontend"
+            title: "KESS INSPIRE",
+            description: "Advanced Level Examination Management System for A/L 2025 Maths stream with student, invigilator, examiner, and admin workflows.",
+            tags: ["React.js", "Node.js", "Express", "Supabase", "Full-Stack"],
+            icon: "📚",
+            url: "#"
         },
         {
             id: 2,
@@ -33,11 +33,11 @@ export default function ProjectsPage() {
         },
         {
             id: 4,
-            title: "AURA WEB PAGE",
-            description: "React + Vite web interface for the Aura system, built and deployed as a production-facing frontend.",
-            tags: ["React", "JavaScript", "Vite", "CSS"],
-            icon: "🌐",
-            url: "https://github.com/KalharaJayathissa/AuraWebPage"
+            title: "4-BIT NANO PROCESSOR",
+            description: "Custom 4-bit nanoprocessor built in VHDL and synthesized on the Xilinx Basys 3 FPGA with debugging and control-flow visualization.",
+            tags: ["VHDL", "FPGA", "Vivado", "Digital Logic", "Computer Architecture"],
+            icon: "🧠",
+            url: "#"
         }
     ]
 
