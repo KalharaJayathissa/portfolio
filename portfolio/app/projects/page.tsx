@@ -12,7 +12,7 @@ export default function ProjectsPage() {
             title: "KESS INSPIRE",
             description: "Advanced Level Examination Management System for A/L 2025 Maths stream with student, invigilator, examiner, and admin workflows.",
             tags: ["React.js", "Node.js", "Express", "Supabase", "Full-Stack"],
-            icon: "📚",
+            thumbnail: "/project-thumbnails/kess-inspire.jpg",
             url: "#"
         },
         {
@@ -20,7 +20,7 @@ export default function ProjectsPage() {
             title: "ENCRYPTOR-CPP",
             description: "C++ file encryption toolkit with Qt GUI and CLI variants, including AES-256-CBC mode with OpenSSL.",
             tags: ["C++", "Qt", "OpenSSL", "Linux"],
-            icon: "🔐",
+            thumbnail: "/project-thumbnails/encryptor-cpp.png",
             url: "https://github.com/KalharaJayathissa/encryptor-cpp"
         },
         {
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
             title: "TG_VIDEOS_BOT",
             description: "Telegram bot application to send and store videos with MongoDB-backed persistence and multiple runtime modes.",
             tags: ["Python", "Telegram Bot API", "MongoDB", "Docker"],
-            icon: "🤖",
+            thumbnail: "/project-thumbnails/tg-videos-bot.jpg",
             url: "https://github.com/KalharaJayathissa/tg_videos_bot"
         },
         {
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
             title: "4-BIT NANO PROCESSOR",
             description: "Custom 4-bit nanoprocessor built in VHDL and synthesized on the Xilinx Basys 3 FPGA with debugging and control-flow visualization.",
             tags: ["VHDL", "FPGA", "Vivado", "Digital Logic", "Computer Architecture"],
-            icon: "🧠",
+            thumbnail: "/project-thumbnails/four-bit-nano-processor.jpg",
             url: "#"
         }
     ]
@@ -121,13 +121,20 @@ export default function ProjectsPage() {
                             {/* Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:via-green-500/5 group-hover:to-transparent transition-all duration-500" />
 
+                            {/* Thumbnail */}
+                            <div className="relative h-44 md:h-52 w-full overflow-hidden border-b border-green-500/20 bg-black/50">
+                                <Image
+                                    src={project.thumbnail}
+                                    alt={project.title}
+                                    fill
+                                    unoptimized
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                />
+                            </div>
+
                             {/* Content */}
                             <div className="relative p-6 md:p-8">
-                                {/* Icon/Image Placeholder */}
-                                <div className="w-14 h-14 md:w-16 md:h-16 mb-5 md:mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center rounded-2xl">
-                                    <span className="text-3xl">{project.icon}</span>
-                                </div>
-
                                 <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-green-500 transition">
                                     {project.title}
                                 </h3>
