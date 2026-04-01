@@ -421,7 +421,7 @@ export default function Home() {
           </motion.div>
 
           {/* Right Side Tab */}
-          <div className="fixed right-0 top-0 bottom-0 z-40 h-screen w-[5.25rem] sm:w-[6rem] lg:w-[7rem]">
+          <div className="fixed right-0 top-1/2 z-40 h-[13.5rem] w-[3.5rem] -translate-y-1/2 sm:top-0 sm:bottom-0 sm:h-screen sm:w-[6rem] sm:translate-y-0 lg:w-[7rem]">
             <Link
               href="/projects"
               className="group relative flex h-full w-full items-center justify-center overflow-hidden text-white font-bold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-x-1"
@@ -438,7 +438,7 @@ export default function Home() {
                   background: "linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0))"
                 }}
               />
-              <span className="relative z-10 whitespace-nowrap text-[1.3rem] sm:text-[1.45rem] lg:text-[2.45rem] leading-none [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180">
+              <span className="relative z-10 whitespace-nowrap text-[0.8rem] tracking-[0.08em] leading-tight sm:text-[1.45rem] sm:tracking-[0.16em] lg:text-[2.45rem] lg:tracking-[0.16em] [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180">
                 PROJECTS &amp; PRODUCTS
               </span>
             </Link>
