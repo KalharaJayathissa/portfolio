@@ -83,10 +83,10 @@ export default function MediumArticlesGrid() {
     return (
       <>
         {[1, 2, 3].map((item) => (
-          <div key={item} className="border border-green-500/20 bg-gradient-to-br from-gray-900 to-black p-5 md:p-6 animate-pulse">
-            <div className="h-44 w-full bg-gray-800 mb-4" />
-            <div className="h-4 w-1/3 bg-gray-800 mb-3" />
-            <div className="h-6 w-5/6 bg-gray-800" />
+          <div key={item} className="border border-green-500/20 bg-gradient-to-br from-gray-900 to-black p-5 md:p-6 animate-pulse rounded-2xl">
+            <div className="h-44 w-full bg-gray-800 mb-4 rounded-xl" />
+            <div className="h-4 w-1/3 bg-gray-800 mb-3 rounded-full" />
+            <div className="h-6 w-5/6 bg-gray-800 rounded-full" />
           </div>
         ))}
       </>
@@ -95,7 +95,7 @@ export default function MediumArticlesGrid() {
 
   if (hasError) {
     return (
-      <div className="border border-red-500/30 bg-red-500/10 text-red-200 px-5 py-4 md:col-span-2">
+      <div className="border border-red-500/30 bg-red-500/10 text-red-200 px-5 py-4 md:col-span-2 rounded-2xl">
         Could not load Medium articles right now. Please try again later.
       </div>
     )
@@ -114,7 +114,7 @@ export default function MediumArticlesGrid() {
         return (
           <article
             key={item.link}
-            className={`group border bg-gradient-to-br from-gray-900 to-black overflow-hidden flex flex-col hover:border-green-500 transition-all duration-300 active:scale-[0.985] ${
+            className={`group border bg-gradient-to-br from-gray-900 to-black overflow-hidden flex flex-col hover:border-green-500 transition-all duration-300 active:scale-[0.985] rounded-2xl ${
               isFeatured
                 ? "featured-post border-green-500 md:col-span-2"
                 : "border-green-500/30"
@@ -153,7 +153,7 @@ export default function MediumArticlesGrid() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-black font-semibold text-sm tracking-wide hover:bg-green-400 transition-all duration-200 active:scale-95"
+                className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-black font-semibold text-sm tracking-wide hover:bg-green-400 transition-all duration-200 active:scale-95 rounded-xl"
               >
                 Read on Medium
               </a>

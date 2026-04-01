@@ -116,7 +116,7 @@ export default function ProjectsPage() {
                                 y: -10,
                                 transition: { duration: 0.3 }
                             }}
-                            className="group relative bg-gradient-to-br from-gray-900 to-black border-2 border-green-500/30 hover:border-green-500 transition-all duration-300 overflow-hidden"
+                            className="group relative bg-gradient-to-br from-gray-900 to-black border-2 border-green-500/30 hover:border-green-500 transition-all duration-300 overflow-hidden rounded-2xl"
                         >
                             {/* Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:via-green-500/5 group-hover:to-transparent transition-all duration-500" />
@@ -124,7 +124,7 @@ export default function ProjectsPage() {
                             {/* Content */}
                             <div className="relative p-6 md:p-8">
                                 {/* Icon/Image Placeholder */}
-                                <div className="w-14 h-14 md:w-16 md:h-16 mb-5 md:mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center">
+                                <div className="w-14 h-14 md:w-16 md:h-16 mb-5 md:mb-6 bg-green-500/20 border border-green-500 flex items-center justify-center rounded-2xl">
                                     <span className="text-3xl">{project.icon}</span>
                                 </div>
 
@@ -141,7 +141,7 @@ export default function ProjectsPage() {
                                     {project.tags.map((tag, index) => (
                                         <span
                                             key={index}
-                                            className="text-xs bg-green-500/10 text-green-500 px-3 py-1 border border-green-500/30"
+                                            className="text-xs bg-green-500/10 text-green-500 px-3 py-1 border border-green-500/30 rounded-full"
                                         >
                                             {tag}
                                         </span>
@@ -176,7 +176,7 @@ export default function ProjectsPage() {
             >
                 <Link
                     href="/"
-                    className="group relative px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-base md:text-lg tracking-wider overflow-hidden hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300"
+                    className="group relative px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-base md:text-lg tracking-wider overflow-hidden hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 rounded-2xl"
                 >
                     <span className="relative z-10 flex items-center gap-3">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

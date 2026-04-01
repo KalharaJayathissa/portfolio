@@ -28,7 +28,7 @@ const subsections = [
       <>
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">EDUCATION</h3>
         <div className="space-y-4 sm:space-y-5">
-          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div className="flex-1">
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
@@ -38,13 +38,13 @@ const subsections = [
                   Entered the Department of CSE in 2024 by securing 3.85 (as the 150th) of SGPA from first semester examination.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
                 <Image src="/cse_logo.jpeg" alt="Department of Computer Science and Engineering logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div className="flex-1">
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
@@ -54,13 +54,13 @@ const subsections = [
                   Got selected for the course B.Sc Engineering Honours.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
                 <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div className="flex-1">
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">A/L</h4>
@@ -68,13 +68,13 @@ const subsections = [
                   Passed with 2.1400 Z-score in Physical Science stream in 2022 (2023) A/L examination.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
                 <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
+          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div className="flex-1">
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">O/L</h4>
@@ -82,7 +82,7 @@ const subsections = [
                   Secured 9 A's in 2019.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
                 <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
               </div>
             </div>
@@ -312,8 +312,8 @@ export default function AboutSection() {
           transition={{ duration: 0.8 }}
           className="relative w-64 sm:w-80 md:w-96 lg:w-[30rem] h-96 lg:h-[30rem]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-lg" />
-          <div className="relative w-full h-full rounded-lg border-2 border-green-500/30 overflow-hidden bg-black/30">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-2xl" />
+          <div className="relative w-full h-full rounded-2xl border-2 border-green-500/30 overflow-hidden bg-black/30">
             <Image
               src="/AboutMe.jpg"
               alt="About Me"
@@ -379,11 +379,11 @@ export default function AboutSection() {
         >
           {subsections.map((section) => (
             <div key={section.id} className="w-full shrink-0 snap-start px-4">
-              <div className="min-h-[62vh] rounded-xl border border-green-500/20 bg-black/40 p-5">
+              <div className="min-h-[62vh] rounded-2xl border border-green-500/20 bg-black/40 p-5">
                 {section.content}
 
                 {section.id === "about" && (
-                  <div className="relative w-full max-w-sm h-80 mx-auto mt-6 rounded-lg border-2 border-green-500/30 overflow-hidden bg-black/30">
+                  <div className="relative w-full max-w-sm h-80 mx-auto mt-6 rounded-2xl border-2 border-green-500/30 overflow-hidden bg-black/30">
                     <Image
                       src="/AboutMe.jpg"
                       alt="About Me"

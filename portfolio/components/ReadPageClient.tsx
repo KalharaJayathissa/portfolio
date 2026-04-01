@@ -72,7 +72,7 @@ export default function ReadPageClient({ articles }: ReadPageClientProps) {
                   key={article.slug}
                   variants={cardVariants}
                   whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                  className="group border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-6 md:p-7 hover:border-green-500 transition-all duration-300 active:scale-[0.985]"
+                  className="group border border-green-500/30 bg-gradient-to-br from-gray-900 to-black p-6 md:p-7 hover:border-green-500 transition-all duration-300 active:scale-[0.985] rounded-2xl"
                 >
                   <Link href={`/read/${article.slug}`} className="block h-full">
                     <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-400 mb-3 tracking-wide">

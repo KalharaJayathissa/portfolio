@@ -419,7 +419,7 @@ export default function Home() {
                   className="relative flex justify-start md:justify-end"
                 >
                   <div className="w-full md:w-5/12">
-                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
+                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
                       <div className="inline-block md:absolute md:-left-2 md:top-0 bg-green-500 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2025 - PRESENT
                       </div>
@@ -444,7 +444,7 @@ export default function Home() {
                   className="relative flex justify-start"
                 >
                   <div className="w-full md:w-5/12">
-                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
+                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
                       <div className="inline-block md:absolute md:-right-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2025
                       </div>
@@ -469,7 +469,7 @@ export default function Home() {
                   className="relative flex justify-start md:justify-end"
                 >
                   <div className="w-full md:w-5/12">
-                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative">
+                    <div className="border-2 border-gray-800 p-6 bg-white shadow-lg relative rounded-2xl">
                       <div className="inline-block md:absolute md:-left-2 md:top-0 bg-gray-200 border border-gray-800 text-black px-3 py-1 text-xs font-bold tracking-wider">
                         2025
                       </div>
@@ -529,7 +529,7 @@ export default function Home() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Jane Doe"
-                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition"
+                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition rounded-2xl"
                   required
                 />
               </div>
@@ -546,7 +546,7 @@ export default function Home() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="jane@example.com"
-                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition"
+                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition rounded-2xl"
                   required
                 />
               </div>
@@ -563,7 +563,7 @@ export default function Home() {
                   onChange={handleChange}
                   placeholder="Tell me a bit about your project..."
                   rows={5}
-                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition resize-none"
+                  className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition resize-none rounded-2xl"
                   required
                 />
               </div>
@@ -573,7 +573,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider"
+                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider rounded-2xl"
               >
                 <Image src="/flask.png" alt="flask" width={32} height={32} className="inline-block -translate-y-1 md:w-[44px] md:h-[44px]" />
                 SEND MESSAGE
