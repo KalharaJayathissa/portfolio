@@ -13,7 +13,17 @@ export default function ProjectsPage() {
             description: "Advanced Level Examination Management System for A/L 2025 Maths stream with student, invigilator, examiner, and admin workflows.",
             tags: ["React.js", "Node.js", "Express", "Supabase", "Full-Stack"],
             thumbnail: "/project-thumbnails/kess-inspire.jpg",
-            url: "#"
+            url: "https://github.com/KalharaJayathissa/inspire-frontend",
+            links: [
+                {
+                    label: "BACKEND",
+                    href: "https://github.com/MORA-KESS/Inspire_backend"
+                },
+                {
+                    label: "FRONTEND",
+                    href: "https://github.com/KalharaJayathissa/inspire-frontend"
+                }
+            ]
         },
         {
             id: 2,
@@ -37,7 +47,7 @@ export default function ProjectsPage() {
             description: "Custom 4-bit nanoprocessor built in VHDL and synthesized on the Xilinx Basys 3 FPGA with debugging and control-flow visualization.",
             tags: ["VHDL", "FPGA", "Vivado", "Digital Logic", "Computer Architecture"],
             thumbnail: "/project-thumbnails/four-bit-nano-processor.jpg",
-            url: "#"
+            url: "https://github.com/KalharaJayathissa/4-bit-nano-processor"
         }
     ]
 
@@ -156,17 +166,33 @@ export default function ProjectsPage() {
                                 </div>
 
                                 {/* Hover Indicator */}
-                                <a
-                                    href={project.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="absolute bottom-4 right-4 flex items-center gap-2 text-xs font-semibold tracking-wide text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                                >
-                                    VIEW REPO
-                                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </a>
+                                {project.links ? (
+                                    <div className="absolute bottom-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        {project.links.map((link) => (
+                                            <a
+                                                key={link.href}
+                                                href={link.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-1 text-[11px] font-semibold tracking-wide text-green-400 hover:text-green-300"
+                                            >
+                                                {link.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <a
+                                        href={project.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="absolute bottom-4 right-4 flex items-center gap-2 text-xs font-semibold tracking-wide text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >
+                                        VIEW REPO
+                                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     ))}
