@@ -179,13 +179,16 @@ export default function Home() {
             className="w-full max-w-[760px] px-3 border border-white/30 shadow-[0_0_24px_rgba(255,255,255,0.15)]"
           >
             <div className={`w-full flex items-center justify-center flex-wrap sm:flex-nowrap gap-3 sm:gap-8 md:gap-12 text-[10px] sm:text-sm tracking-wider transition-colors ${isLightBackgroundUnderNav ? "text-black" : "text-white"}`}>
-              <Link href="/" className="text-current border-b-2 border-current pb-1">
+              <Link href="/" className="text-current border-b-2 border-current pb-1 transition-transform duration-150 active:scale-95">
                 HOME
               </Link>
-              <Link href="/projects" className="text-current hover:opacity-70 transition-opacity">
+              <Link href="/projects" className="text-current hover:opacity-70 transition-all duration-150 active:scale-95">
                 PROJECTS & PRODUCTS
               </Link>
-              <a href="#contact" className="text-current hover:opacity-70 transition-opacity">
+              <Link href="/read" className="text-current hover:opacity-70 transition-all duration-150 active:scale-95">
+                READ
+              </Link>
+              <a href="#contact" className="text-current hover:opacity-70 transition-all duration-150 active:scale-95">
                 CONTACT
               </a>
             </div>
@@ -332,7 +335,7 @@ export default function Home() {
           <div className="relative z-20 lg:fixed lg:right-0 lg:top-0 lg:bottom-0 lg:z-40 w-full lg:w-32 h-20 sm:h-24 lg:h-screen mt-2 sm:mt-4 lg:mt-0">
             <Link
               href="/projects"
-              className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden"
+              className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden active:scale-[0.985]"
               style={{
                 backgroundSize: '200% 200%',
                 animation: `gradientShift ${PROJECT_GRADIENT_DURATION}s ease infinite, pulse ${PROJECT_PULSE_DURATION}s ease-in-out infinite`
