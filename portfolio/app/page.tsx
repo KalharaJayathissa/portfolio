@@ -487,12 +487,12 @@ export default function Home() {
           >
             {/* Title */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-              LET&apos;S <span className="bg-green-500 text-black px-2">CONNECT</span>
+              LET&apos;S <span className="bg-green-500 text-black px-2">COOK</span>
             </h2>
 
             {/* Subtitle */}
-            <p className="text-center text-gray-300 mb-8 md:mb-12">
-              Have a project or collaboration in mind? Send a message.
+            <p className="text-center italic text-gray-300 mb-8 md:mb-12">
+              If you want the blue stuff, time to call me!
             </p>
 
             {/* Contact Form */}
@@ -515,7 +515,7 @@ export default function Home() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Jane Doe"
+                  placeholder="Walter White"
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition rounded-2xl"
                   required
                 />
@@ -532,7 +532,7 @@ export default function Home() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="jane@example.com"
+                  placeholder="heisenberg@abqmail.com"
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition rounded-2xl"
                   required
                 />
@@ -548,7 +548,7 @@ export default function Home() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me a bit about your project..."
+                  placeholder="Say my name... or tell me about your project."
                   rows={5}
                   className="w-full px-4 py-3 bg-transparent border-2 border-white text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition resize-none rounded-2xl"
                   required
