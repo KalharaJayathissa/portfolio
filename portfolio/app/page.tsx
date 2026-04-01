@@ -77,6 +77,7 @@ export default function Home() {
   const navRef = useRef<HTMLElement | null>(null)
   const [isLightBackgroundUnderNav, setIsLightBackgroundUnderNav] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
+  const [clientIp, setClientIp] = useState("loading...")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -111,6 +112,32 @@ export default function Home() {
 
     return () => {
       window.removeEventListener("resize", updateViewport)
+    }
+  }, [])
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadClientIp = async () => {
+      try {
+        const response = await fetch("/api/client-ip", { cache: "no-store" })
+        if (!response.ok) return
+
+        const data = (await response.json()) as { ip?: string }
+        if (isMounted && data.ip) {
+          setClientIp(data.ip)
+        }
+      } catch {
+        if (isMounted) {
+          setClientIp("unknown")
+        }
+      }
+    }
+
+    void loadClientIp()
+
+    return () => {
+      isMounted = false
     }
   }, [])
 
@@ -242,9 +269,12 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-20"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-20 flex flex-col items-end gap-1"
           >
             <ViewCounter pageName="home" />
+            <p className="text-[10px] sm:text-xs text-white/70 tracking-wider">
+              accessing from {clientIp}
+            </p>
           </motion.div>
 
           {/* Left Content */}
