@@ -125,6 +125,10 @@ const subsections = [
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="flex items-start gap-2 sm:gap-3">
             <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">Networking</span>
+          </div>
+          <div className="flex items-start gap-2 sm:gap-3">
+            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
             <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">System Architecture & Design</span>
           </div>
           <div className="flex items-start gap-2 sm:gap-3">
