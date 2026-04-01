@@ -4,6 +4,18 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+
+// Breathing animation for the side tab
+const breathingAnimation = `
+  @keyframes breathing {
+    0%, 100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.1);
+    }
+  }
+`
 import ViewCounter from "./components/viewcounter"
 import ClickSpark from '../components/ClickSpark';
 import GlassSurface from "@/components/GlassSurface"
@@ -44,6 +56,24 @@ const FacebookIcon = () => (
 
 
 export default function Home() {
+  // Add breathing animation styles
+  useEffect(() => {
+    const style = document.createElement('style')
+    style.textContent = `
+      @keyframes breathing {
+        0%, 100% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.1);
+        }
+      }
+    `
+    document.head.appendChild(style)
+    return () => {
+      document.head.removeChild(style)
+    }
+  }, [])
   const navRef = useRef<HTMLElement | null>(null)
   const [isLightBackgroundUnderNav, setIsLightBackgroundUnderNav] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
@@ -331,66 +361,27 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Right Corner - Full Height Stylish Button */}
-          <div className="relative z-20 lg:fixed lg:right-0 lg:top-0 lg:bottom-0 lg:z-40 w-full lg:w-32 h-20 sm:h-24 lg:h-screen mt-2 sm:mt-4 lg:mt-0">
+          {/* Right Side Tab */}
+          <div className="fixed right-0 top-0 bottom-0 z-40 h-screen w-[5.25rem] sm:w-[6rem] lg:w-[7rem]">
             <Link
               href="/projects"
-              className="group relative block w-full h-full bg-gradient-to-br from-green-500 via-teal-500 to-green-600 hover:from-teal-500 hover:via-green-500 hover:to-teal-600 transition-all duration-500 overflow-hidden active:scale-[0.985]"
+              className="group relative flex h-full w-full items-center justify-center overflow-hidden text-white font-bold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-x-1"
               style={{
-                backgroundSize: '200% 200%',
-                animation: `gradientShift ${PROJECT_GRADIENT_DURATION}s ease infinite, pulse ${PROJECT_PULSE_DURATION}s ease-in-out infinite`
+                borderRadius: "20px 0 0 20px",
+                background: "linear-gradient(to bottom, #1f3a2b 0%, #2d4830 15%, #3a6a38 30%, #3a6a38 100%)",
+                animation: "breathing 4s ease-in-out infinite"
               }}
             >
-              {/* Pulsing border effect at rest */}
-              <div className="absolute inset-0 border-4 border-white/0 group-hover:border-white/0 transition-all duration-500"
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                  animation: `borderPulse ${PROJECT_BORDER_DURATION}s ease-in-out infinite`,
-                  animationPlayState: 'running'
+                  borderRadius: "20px 0 0 20px",
+                  background: "linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0))"
                 }}
               />
-
-              {/* Animated glow effect on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ animation: `glow ${PROJECT_GLOW_DURATION}s ease-in-out infinite` }} />
-
-              {/* Texture overlay */}
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300"
-                style={{
-                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M0 0h20L0 20z\'/%3E%3C/g%3E%3C/svg%3E")',
-                  backgroundSize: '20px 20px'
-                }}
-              />
-
-              {/* Content */}
-              <div className="relative h-full flex flex-row lg:flex-col items-center justify-center p-3 sm:p-4 gap-3 sm:gap-4 lg:gap-0 transform group-hover:scale-105 transition-transform duration-500">
-                {/* Icon */}
-                <div className="mb-0 lg:mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"
-                  style={{ animation: `float ${PROJECT_FLOAT_DURATION}s ease-in-out infinite` }}>
-                  <svg className="w-10 h-10 lg:w-12 lg:h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
-                  </svg>
-                </div>
-
-                <div className="text-black text-sm lg:text-base font-bold tracking-[0.2em] text-center writing-mode-vertical transform rotate-0 whitespace-normal leading-tight">
-                  PROJECTS
-                  <br />
-                  <span className="text-xl">&</span>
-                  <br />
-                  PRODUCTS
-                </div>
-
-                {/* Arrow indicator */}
-                <div className="mt-0 lg:mt-6 transform group-hover:translate-x-1 transition-transform duration-300">
-                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Shine effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-white/20 to-transparent transform -skew-y-12 translate-y-[-100%] group-hover:translate-y-[200%] transition-transform duration-1000" />
-              </div>
+              <span className="relative z-10 whitespace-nowrap text-[1.3rem] sm:text-[1.45rem] lg:text-[2.45rem] leading-none [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180">
+                PROJECTS &amp; PRODUCTS
+              </span>
             </Link>
           </div>
         </div>
