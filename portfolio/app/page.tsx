@@ -216,11 +216,7 @@ export default function Home() {
     }
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -228,6 +224,52 @@ export default function Home() {
       [e.target.name]: e.target.value
     })
   }
+
+  //Submit form data to the Vercel Go function
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ text: "", type: "" });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatusMessage({ text: "", type: "" });
+
+    try {
+      // Send the data to the deployed API route
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), 
+      });
+
+      if (response.ok) {
+        setStatusMessage({ text: "Message cooked and delivered successfully!", type: "success" });
+        // Clear the form after success
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        let errorMessage = "Oops! The batch failed. Try again."
+        try {
+          const data = await response.json() as { error?: string }
+          if (data?.error) {
+            errorMessage = data.error
+          }
+        } catch {
+          const text = await response.text()
+          if (text) {
+            errorMessage = text
+          }
+        }
+
+        setStatusMessage({ text: errorMessage, type: "error" });
+      }
+    } catch (error) {
+      setStatusMessage({ text: "Network error. Check your connection.", type: "error" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <ClickSpark
@@ -619,11 +661,27 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider rounded-2xl"
+                disabled={isSubmitting}
+                className="w-full bg-green-500 text-black font-bold py-4 px-6 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center justify-center gap-2 text-base md:text-lg tracking-wider rounded-2xl"
               >
                 <Image src="/flask.png" alt="flask" width={32} height={32} className="inline-block -translate-y-1 md:w-[44px] md:h-[44px]" />
-                SEND MESSAGE
+                {isSubmitting ? "COOKING..." : "SEND MESSAGE"}
               </motion.button>
+
+              {/* Status Message */}
+              {statusMessage.text && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-4 rounded-2xl text-center font-semibold ${
+                    statusMessage.type === "success"
+                      ? "bg-green-500/20 border border-green-500 text-green-300"
+                      : "bg-red-500/20 border border-red-500 text-red-300"
+                  }`}
+                >
+                  {statusMessage.text}
+                </motion.div>
+              )}
             </motion.form>
           </motion.div>
         </div>
