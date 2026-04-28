@@ -593,7 +593,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p className="text-center italic text-gray-300 mb-8 md:mb-12">
-              If you want the blue stuff;  it's time, to call me!
+              You know the business, and I know the chemistry!
             </p>
 
             {/* Contact Form */}
