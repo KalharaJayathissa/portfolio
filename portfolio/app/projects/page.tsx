@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { layerVariants, staggerContainer, cardVariants } from "../../components/PageTransition"
+import NavBar from "@/components/NavBar"
 
 export default function ProjectsPage() {
     const projects = [
@@ -63,28 +64,7 @@ export default function ProjectsPage() {
             />
 
             {/* Navigation */}
-            <motion.nav
-                variants={layerVariants.content}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 px-4 sm:px-6 md:px-12 py-4 md:py-6 border-b border-green-500/20"
-            >
-                <Link href="/" className="text-xl md:text-2xl font-bold hover:text-green-500 transition">
-                    <span className="text-green-500">K</span>ALHARA
-                </Link>
-                <div className="flex gap-4 sm:gap-8 md:gap-12 text-xs sm:text-sm tracking-wider">
-                    <Link href="/" className="text-white hover:text-green-500 transition">
-                        HOME
-                    </Link>
-                    <a href="#" className="text-white border-b-2 border-green-500 pb-1">
-                        PROJECTS & PRODUCTS
-                    </a>
-                    <Link href="/#contact" className="text-white hover:text-green-500 transition">
-                        CONTACT
-                    </Link>
-                </div>
-            </motion.nav>
+            <NavBar currentPage="projects" />
 
             {/* Hero Section */}
             <motion.div

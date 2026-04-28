@@ -83,10 +83,13 @@ export default function MediumArticlesGrid() {
     return (
       <>
         {[1, 2, 3].map((item) => (
-          <div key={item} className="border border-green-500/20 bg-gradient-to-br from-gray-900 to-black p-5 md:p-6 animate-pulse rounded-2xl">
-            <div className="h-44 w-full bg-gray-800 mb-4 rounded-xl" />
-            <div className="h-4 w-1/3 bg-gray-800 mb-3 rounded-full" />
-            <div className="h-6 w-5/6 bg-gray-800 rounded-full" />
+          <div key={item} className="bg-gray-900 rounded-md overflow-hidden shadow-lg animate-pulse">
+            <div className="h-40 w-full bg-gray-800 mb-0" />
+            <div className="p-3">
+              <div className="h-4 w-2/3 bg-gray-700 mb-2 rounded" />
+              <div className="h-5 w-full bg-gray-700 mb-3 rounded" />
+              <div className="h-3 w-1/2 bg-gray-700 rounded" />
+            </div>
           </div>
         ))}
       </>
@@ -95,7 +98,7 @@ export default function MediumArticlesGrid() {
 
   if (hasError) {
     return (
-      <div className="border border-red-500/30 bg-red-500/10 text-red-200 px-5 py-4 md:col-span-2 rounded-2xl">
+      <div className="bg-red-500/10 border border-red-500/30 text-red-200 px-5 py-4 md:col-span-2 rounded-md">
         Could not load Medium articles right now. Please try again later.
       </div>
     )
@@ -112,53 +115,45 @@ export default function MediumArticlesGrid() {
         const thumbnail = isFeatured ? FEATURED_POST_THUMBNAIL : item.thumbnail
 
         return (
-          <article
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
             key={item.link}
-            className={`group border bg-gradient-to-br from-gray-900 to-black overflow-hidden flex flex-col hover:border-green-500 transition-all duration-300 active:scale-[0.985] rounded-2xl ${
-              isFeatured
-                ? "featured-post border-green-500 md:col-span-2"
-                : "border-green-500/30"
-            }`}
+            className="group bg-gray-900 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 active:scale-[0.98] rounded-md cursor-pointer shadow-md hover:shadow-emerald-900/50"
           >
-            <div className={`w-full h-44 md:h-52 overflow-hidden border-b border-green-500/20 flex items-center justify-center ${isFeatured ? "bg-white" : "bg-black/50"}`}>
+            <div className="w-full overflow-hidden flex items-center justify-center bg-black/40 group-hover:bg-black/60 transition-colors duration-300">
               {thumbnail ? (
                 <img
                   src={thumbnail}
                   alt={item.title}
-                  className="w-full h-full object-contain p-4"
+                  className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-xs tracking-wider text-gray-500">
+                <div className="w-full h-40 flex items-center justify-center text-xs tracking-wider text-gray-500">
                   NO THUMBNAIL
                 </div>
               )}
             </div>
 
-            <div className="p-5 md:p-6 flex-1 flex flex-col">
-              <div className="flex items-center flex-wrap gap-2 mb-3">
-                <span className="inline-flex items-center px-2 py-1 border border-green-500/40 text-[10px] sm:text-xs text-green-300 tracking-wider font-semibold">
-                  FROM MEDIUM
+            <div className="p-3 md:p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="font-bold mb-2 group-hover:text-green-400 transition-colors duration-200 leading-snug flex-1 text-sm md:text-base">
+                  {item.title}
+                </h3>
+              </div>
+
+              <div className="flex items-center flex-wrap gap-2">
+                <span className="px-2 py-1 text-[10px] tracking-wider font-medium text-green-700 bg-green-900/40 rounded">
+                  MEDIUM
                 </span>
-                <p className="text-xs sm:text-sm text-gray-400 tracking-wide">
+                <p className="text-xs text-gray-400 tracking-wide">
                   {Number.isNaN(parsedDate.getTime()) ? item.pubDate : dateFormatter.format(parsedDate)}
                 </p>
               </div>
-
-              <h3 className="text-xl md:text-2xl font-bold mb-5 group-hover:text-green-500 transition-colors leading-snug flex-1">
-                {item.title}
-              </h3>
-
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-black font-semibold text-sm tracking-wide hover:bg-green-400 transition-all duration-200 active:scale-95 rounded-xl"
-              >
-                Read on Medium
-              </a>
             </div>
-          </article>
+          </a>
         )
       })}
     </>
