@@ -104,7 +104,7 @@ export default function NavBar({ currentPage }: NavBarProps) {
             READ
           </Link>
           <a 
-            href="#contact" 
+            href="/#contact" 
             className="text-current hover:opacity-70 transition-all duration-150 active:scale-95"
           >
             CONTACT
