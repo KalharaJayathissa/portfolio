@@ -35,7 +35,7 @@ const subsections = [
                   Department of Computer Science and Engineering, University of Moratuwa
                 </h4>
                 <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-                  Entered the Department of CSE in 2024 by securing 3.85 (as the 150th) of SGPA from first semester examination.
+                  Entered the Department of CSE in 2024 by securing 3.85 (as the 150th of the faculty) of SGPA from first semester examination.
                 </p>
               </div>
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
