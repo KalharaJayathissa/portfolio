@@ -37,7 +37,7 @@ export default function ReadPageClient() {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="px-4 sm:px-6 md:px-12 py-12 md:py-16 pt-20 md:pt-24"
+        className="relative z-10 px-4 sm:px-6 md:px-12 py-12 md:py-16 pt-20 md:pt-24"
       >
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">

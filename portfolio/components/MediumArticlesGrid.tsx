@@ -120,7 +120,7 @@ export default function MediumArticlesGrid() {
             target="_blank"
             rel="noopener noreferrer"
             key={item.link}
-            className="group bg-gray-900 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 active:scale-[0.98] rounded-md cursor-pointer shadow-md hover:shadow-emerald-900/50"
+            className="group relative z-10 bg-gray-900 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 active:scale-[0.98] rounded-md cursor-pointer shadow-md hover:shadow-emerald-900/50"
           >
             <div className="w-full overflow-hidden flex items-center justify-center bg-black/40 group-hover:bg-black/60 transition-colors duration-300">
               {thumbnail ? (

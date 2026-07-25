@@ -113,23 +113,30 @@ const ClickSpark = ({
     };
   }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
-  const handleClick = e => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  useEffect(() => {
+    const handleGlobalClick = e => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    const now = performance.now();
-    const newSparks = Array.from({ length: sparkCount }, (_, i) => ({
-      x,
-      y,
-      angle: (2 * Math.PI * i) / sparkCount,
-      startTime: now
-    }));
+      const now = performance.now();
+      const newSparks = Array.from({ length: sparkCount }, (_, i) => ({
+        x,
+        y,
+        angle: (2 * Math.PI * i) / sparkCount,
+        startTime: now
+      }));
 
-    sparksRef.current.push(...newSparks);
-  };
+      sparksRef.current.push(...newSparks);
+    };
+
+    window.addEventListener('pointerdown', handleGlobalClick);
+    return () => {
+      window.removeEventListener('pointerdown', handleGlobalClick);
+    };
+  }, [sparkCount]);
 
   return (
     <div
@@ -138,7 +145,6 @@ const ClickSpark = ({
         width: '100%',
         height: '100%'
       }}
-      onClick={handleClick}
     >
       <canvas
         ref={canvasRef}
@@ -150,6 +156,7 @@ const ClickSpark = ({
           position: 'absolute',
           top: 0,
           left: 0,
+          zIndex: 50,
           pointerEvents: 'none'
         }}
       />

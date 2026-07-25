@@ -809,13 +809,16 @@ function SplashCursor({
     }
 
     function clickSplat(pointer) {
-      const color = generateColor();
-      color.r *= 10.0;
-      color.g *= 10.0;
-      color.b *= 10.0;
-      let dx = 10 * (Math.random() - 0.5);
-      let dy = 30 * (Math.random() - 0.5);
-      splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
+      const count = 6;
+      for (let i = 0; i < count; i++) {
+        const color = generateColor();
+        color.r *= 25.0;
+        color.g *= 25.0;
+        color.b *= 25.0;
+        let dx = (Math.random() - 0.5) * 6000;
+        let dy = (Math.random() - 0.5) * 6000;
+        splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
+      }
     }
 
     function splat(x, y, dx, dy, color) {
@@ -1013,11 +1016,11 @@ function SplashCursor({
       }
     }
 
-    // Add event listeners
+    // Add event listeners (Click animation active, mousemove trail commented out)
     window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
+    // window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove, false);
+    // window.addEventListener('touchmove', handleTouchMove, false);
     window.addEventListener('touchend', handleTouchEnd);
 
     updateFrame();
@@ -1034,9 +1037,9 @@ function SplashCursor({
 
       // Remove event listeners
       window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mousemove', handleMouseMove);
+      // window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
+      // window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

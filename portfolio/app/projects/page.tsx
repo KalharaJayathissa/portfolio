@@ -85,13 +85,13 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="py-12 md:py-20 px-4 sm:px-6 md:px-12"
+                className="relative z-10 px-4 sm:px-6 md:px-12 py-12 md:py-16 pt-20 md:pt-24"
             >
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
                         PROJECTS <span className="text-green-500">&</span> PRODUCTS
                     </h1>
-                    <p className="text-base md:text-xl text-gray-300 max-w-2xl">
+                    <p className="text-gray-300 max-w-2xl mb-10">
                         A selection of public projects from my GitHub profile across web development, automation, and security tooling.
                     </p>
                 </div>
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="px-4 sm:px-6 md:px-12 pb-14 md:pb-20"
+                className="relative z-10 px-4 sm:px-6 md:px-12 pb-14 md:pb-20"
             >
                 <motion.div
                     variants={staggerContainer}
