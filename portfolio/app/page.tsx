@@ -229,28 +229,30 @@ export default function Home() {
       duration={700}
     >
       <ContextMenu />
-      <div className="min-h-screen bg-black text-white pt-20 md:pt-24 overflow-x-hidden">
+      <div className="min-h-screen bg-black text-white pt-16 md:pt-20 overflow-x-hidden relative">
+        {/* Fixed Background Grid Pattern spanning all black screens */}
+        <ShapeGrid
+          speed={isMobileViewport ? HERO_GRID_SPEED_MOBILE : HERO_GRID_SPEED_DESKTOP}
+          squareSize={40}
+          direction="diagonal"
+          borderColor="#352a4a"
+          hoverFillColor="#222222"
+          shape="square"
+          hoverTrailAmount={0}
+          className="fixed inset-0 z-0 pointer-events-none opacity-20 sm:opacity-25 lg:opacity-30"
+        />
+
         {/* Navigation */}
         <NavBar currentPage="home" />
 
         {/* Hero Section */}
-        <div className="relative overflow-hidden flex flex-col lg:flex-row min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)]">
-          <ShapeGrid
-            speed={isMobileViewport ? HERO_GRID_SPEED_MOBILE : HERO_GRID_SPEED_DESKTOP}
-            squareSize={40}
-            direction="diagonal"
-            borderColor="#352a4a"
-            hoverFillColor="#222222"
-            shape="square"
-            hoverTrailAmount={0}
-            className="absolute inset-0 z-0 pointer-events-none opacity-20 sm:opacity-25 lg:opacity-30"
-          />
+        <div className="relative overflow-hidden flex flex-col lg:flex-row min-h-[calc(90.9vh-70px)] lg:h-[calc(90.9vh-80px)]">
           {/* View Counter - Top Right */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-40 z-20 flex flex-col items-end gap-1"
+            className="absolute top-3 right-4 sm:top-4 sm:right-6 lg:top-4 lg:right-40 z-20 flex flex-col items-end gap-0.5"
           >
             <ViewCounter pageName="home" />
             <p className="text-[10px] sm:text-xs text-white/70 tracking-wider">
@@ -262,14 +264,14 @@ export default function Home() {
           </motion.div>
 
           {/* Left Content */}
-          <div className="relative z-10 flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-5 sm:px-10 lg:px-20 xl:px-24 pt-12 sm:pt-16 lg:py-8">
+          <div className="relative z-10 flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-5 sm:px-10 lg:px-16 xl:px-20 pt-6 sm:pt-8 lg:py-4">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
               className="max-w-md sm:max-w-lg lg:ml-6"
             >
-              <h1 className="mb-5 lg:mb-8 leading-tight text-3xl sm:text-5xl lg:text-6xl font-bold">
+              <h1 className="mb-4 lg:mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold">
                 <span className="block">
                   <ShinyText
                     text="K"
@@ -340,13 +342,13 @@ export default function Home() {
                   />
                 </span>
               </h1>
-              <p className="text-white text-xs sm:text-base leading-relaxed font-semibold">
+              <p className="text-white text-xs sm:text-sm lg:text-base leading-relaxed font-semibold">
                 Engineer and computer science enthusiast focused on<br />
                 Linux, backend systems, security tooling, and<br />
                 building practical full-stack products.
               </p>
 
-              <div className="mt-5 sm:mt-6 flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
+              <div className="mt-4 sm:mt-5 flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
                 {socialLinks.map((item) => (
                   <Link
                     key={item.label}
@@ -368,15 +370,15 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="relative z-10 flex-1 flex items-end justify-center lg:justify-start pb-0 mt-6 lg:mt-0 lg:pl-12 xl:pl-24"
+            className="relative z-10 flex-1 flex items-end justify-center lg:justify-start pb-0 mt-4 lg:mt-0 lg:pl-12 xl:pl-24"
           >
-            <div className="relative w-72 sm:w-80 lg:w-96 h-[52vh] sm:h-[60vh] lg:h-[calc(100vh-80px)]">
+            <div className="relative w-64 sm:w-72 lg:w-80 xl:w-96 h-[45vh] sm:h-[50vh] lg:h-[calc(90.9vh-80px)]">
               <Image src="/me.png" alt="me" fill className="object-cover object-top" />
             </div>
           </motion.div>
 
           {/* Right Side Tab */}
-          <div className="fixed right-0 top-1/2 z-40 h-[13.5rem] w-[3.5rem] -translate-y-1/2 sm:top-0 sm:bottom-0 sm:h-screen sm:w-[6rem] sm:translate-y-0 lg:w-[7rem]">
+          <div className="fixed right-0 top-1/2 z-40 h-[13.5rem] w-[3.5rem] -translate-y-1/2 sm:top-0 sm:bottom-0 sm:h-full sm:w-[6rem] sm:translate-y-0 lg:w-[7rem]">
             <Link
               href="/projects"
               className="group relative flex h-full w-full items-center justify-center overflow-hidden text-white font-bold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-x-1"
@@ -404,7 +406,7 @@ export default function Home() {
         <AboutSection />
 
         {/* Territory Section - Timeline */}
-        <div id="territory" className="min-h-screen bg-gray-50 text-black py-14 md:py-20 px-4 sm:px-6 md:px-8">
+        <div id="territory" className="min-h-screen bg-gray-50 text-black py-14 md:py-20 px-4 sm:px-6 md:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             {/* Title */}
             <motion.h2
@@ -491,7 +493,7 @@ export default function Home() {
         </div>
 
         {/* Contact Section */}
-        <div id="contact" className="min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-14 md:py-16">
+        <div id="contact" className="min-h-screen bg-transparent flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 py-14 md:py-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -600,7 +602,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-[#1a1a1a] border-t-4 border-green-500 py-6 px-4 sm:px-6 md:px-12">
+        <footer className="relative z-10 bg-[#1a1a1a] border-t-4 border-green-500 py-6 px-4 sm:px-6 md:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
             <p className="text-sm">
               <span className="text-green-500">©</span> 2026 Kalhara Jayathissa

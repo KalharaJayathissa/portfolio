@@ -5,10 +5,23 @@ import { motion } from "framer-motion"
 import MediumArticlesGrid from "@/components/MediumArticlesGrid"
 import { cardVariants, layerVariants, staggerContainer } from "./PageTransition"
 import NavBar from "@/components/NavBar"
+import ShapeGrid from "@/components/ShapeGrid"
 
 export default function ReadPageClient() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-hidden relative">
+      {/* Background Grid Pattern */}
+      <ShapeGrid
+        speed={0.2}
+        squareSize={40}
+        direction="diagonal"
+        borderColor="#352a4a"
+        hoverFillColor="#222222"
+        shape="square"
+        hoverTrailAmount={0}
+        className="fixed inset-0 z-0 pointer-events-none opacity-20 sm:opacity-25 lg:opacity-30"
+      />
+
       <motion.div
         variants={layerVariants.background}
         initial="initial"

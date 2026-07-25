@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { layerVariants, staggerContainer, cardVariants } from "../../components/PageTransition"
 import NavBar from "@/components/NavBar"
+import ShapeGrid from "@/components/ShapeGrid"
 
 export default function ProjectsPage() {
     const projects = [
@@ -53,7 +54,19 @@ export default function ProjectsPage() {
     ]
 
     return (
-        <div className="min-h-screen bg-black text-white overflow-hidden">
+        <div className="min-h-screen bg-black text-white overflow-hidden relative">
+            {/* Background Grid Pattern */}
+            <ShapeGrid
+                speed={0.2}
+                squareSize={40}
+                direction="diagonal"
+                borderColor="#352a4a"
+                hoverFillColor="#222222"
+                shape="square"
+                hoverTrailAmount={0}
+                className="fixed inset-0 z-0 pointer-events-none opacity-20 sm:opacity-25 lg:opacity-30"
+            />
+
             {/* Animated Background Layer */}
             <motion.div
                 variants={layerVariants.background}

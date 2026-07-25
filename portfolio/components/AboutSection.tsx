@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Download } from "lucide-react"
 
 const subsections = [
   {
@@ -10,12 +11,12 @@ const subsections = [
     title: "ABOUT ME",
     content: (
       <>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
           <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
             ABOUT ME
           </span>
         </h2>
-        <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
+        <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl">
           Passionate engineer with a drive to build scalable systems and solve complex problems through clean code and innovative solutions.
         </p>
       </>
@@ -26,64 +27,64 @@ const subsections = [
     title: "EDUCATION",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">EDUCATION</h3>
-        <div className="space-y-4 sm:space-y-5">
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">EDUCATION</h3>
+        <div className="space-y-2.5 sm:space-y-3">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                   Department of Computer Science and Engineering, University of Moratuwa
                 </h4>
-                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-gray-300 mt-1 text-xs sm:text-sm leading-relaxed">
                   Entered the Department of CSE in 2024 by securing 3.85 (as the 150th of the faculty) of SGPA from first semester examination.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/cse_logo.jpeg" alt="Department of Computer Science and Engineering logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/cse_logo.jpeg" alt="Department of Computer Science and Engineering logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                   Faculty of Engineering, University of Moratuwa
                 </h4>
-                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-gray-300 mt-1 text-xs sm:text-sm leading-relaxed">
                   Got selected for the course B.Sc Engineering Honours.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">A/L</h4>
-                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">A/L</h4>
+                <p className="text-gray-300 mt-1 text-xs sm:text-sm leading-relaxed">
                   Passed with 2.1400 Z-score in Physical Science stream in 2022 (2023) A/L examination.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">O/L</h4>
-                <p className="text-gray-300 mt-2 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">O/L</h4>
+                <p className="text-gray-300 mt-1 text-xs sm:text-sm leading-relaxed">
                   Secured 9 A's in 2019.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/rcc.jpeg" alt="RCC logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
@@ -96,60 +97,60 @@ const subsections = [
     title: "LICENSES & CERTIFICATIONS",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">LICENSES &amp; CERTIFICATIONS</h3>
-        <div className="space-y-6 sm:space-y-8">
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">LICENSES &amp; CERTIFICATIONS</h3>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                   AWS Academy Graduate - Microservices and CI/CD Pipeline Builder - Training Badge
                 </h4>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                <p className="text-gray-400 text-xs sm:text-sm mt-1">
                   Amazon Web Services (AWS)
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
                   Issued Mar 2026
                 </p>
                 <a
                   href="https://www.credly.com/badges/66e55e42-43e5-4e18-af0f-ffb248c2d463/linked_in_profile"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex mt-3 text-green-400 text-xs sm:text-sm md:text-base lg:text-lg hover:text-green-300 transition-all duration-150 active:scale-95"
+                  className="inline-flex mt-2 text-green-400 text-xs sm:text-sm hover:text-green-300 transition-all duration-150 active:scale-95"
                 >
                   View credential
                 </a>
               </div>
-              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border border-green-400/50 bg-black/20 text-lg sm:text-xl font-bold text-green-300 overflow-hidden shrink-0">
+              <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl border border-green-400/50 bg-black text-sm sm:text-base font-bold text-green-300 overflow-hidden shrink-0">
                 AWS
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">
                   AWS Academy Graduate - Cloud Foundations - Training Badge
                 </h4>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                <p className="text-gray-400 text-xs sm:text-sm mt-1">
                   Amazon Web Services (AWS)
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
                   Issued Feb 2026
                 </p>
                 <a
                   href="https://www.credly.com/go/ulO0P2wT"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex mt-3 text-green-400 text-xs sm:text-sm md:text-base lg:text-lg hover:text-green-300 transition-all duration-150 active:scale-95"
+                  className="inline-flex mt-2 text-green-400 text-xs sm:text-sm hover:text-green-300 transition-all duration-150 active:scale-95"
                 >
                   Show credential
                 </a>
-                <p className="text-gray-500 text-xs sm:text-sm md:text-base lg:text-lg mt-3">
+                <p className="text-gray-500 text-xs sm:text-sm mt-2">
                   Amazon Web Services (AWS), AWS Identity and Access Management (AWS IAM) and +3 skills
                 </p>
               </div>
-              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl border border-green-400/50 bg-black/20 text-lg sm:text-xl font-bold text-green-300 overflow-hidden shrink-0">
+              <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl border border-green-400/50 bg-black text-sm sm:text-base font-bold text-green-300 overflow-hidden shrink-0">
                 AWS
               </div>
             </div>
@@ -163,36 +164,36 @@ const subsections = [
     title: "EXPERIENCE",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">EXPERIENCE</h3>
-        <div className="space-y-6 sm:space-y-8">
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">Undergraduate</h4>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">EXPERIENCE</h3>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">Undergraduate</h4>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1">
               Department of Computer Science &amp; Engineering, University of Moratuwa · Full-time
             </p>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+            <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
               Mar 2024 - Present · 2 yrs 2 mos
             </p>
-            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-3 font-medium">
+            <p className="text-green-400 text-xs sm:text-sm mt-2 font-medium">
               Engineering
             </p>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">A/L Tutor</h4>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">A/L Tutor</h4>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1">
               Self Employed · Part-time
             </p>
-            <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+            <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
               Jun 2023 - Present · 2 yrs 11 mos
             </p>
-            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-3 font-medium">
+            <p className="text-green-400 text-xs sm:text-sm mt-2 font-medium">
               A/L Physics &amp; Combined Mathematics Tutor | Sinhala &amp; English Medium
             </p>
-            <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+            <p className="text-gray-300 mt-2 text-xs sm:text-sm leading-relaxed">
               Helping students excel in Advanced Level Physics and Combined Mathematics through clear explanations and structured learning. I provide comprehensive tutoring in both Sinhala and English, focusing on concept mastery, problem-solving techniques, and exam success strategies.
             </p>
-            <p className="text-green-400 text-xs sm:text-sm md:text-base lg:text-lg mt-4 font-medium">
+            <p className="text-green-400 text-xs sm:text-sm mt-2 font-medium">
               Physics Education and Tutoring
             </p>
           </div>
@@ -205,44 +206,44 @@ const subsections = [
     title: "HONOURS AND AWARDS",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">HONOURS AND AWARDS</h3>
-        <div className="space-y-6 sm:space-y-8">
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">HONOURS AND AWARDS</h3>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">1st Runner-Up at Cypher 3.0 Hackathon</h4>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">1st Runner-Up at Cypher 3.0 Hackathon</h4>
+                <p className="text-gray-400 text-xs sm:text-sm mt-1">
                   Issued by IEEE WIE Affinity Group of KDU · Oct 2025
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
                   Associated with University of Moratuwa
                 </p>
-                <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm leading-relaxed">
                   Secured 1st Runner-Up position at Cypher 3.0, an inter-university hackathon organized by IEEE WIE Affinity Group of KDU. Competed alongside talented teams, demonstrating strong problem-solving skills, technical expertise, and teamwork in developing innovative technology solutions.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-green-500/20 bg-black/35 p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="rounded-xl border border-green-500/20 bg-black p-3.5 sm:p-4 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="flex-1">
-                <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white">SLIoT Challenge 2025 Semi-Finalists</h4>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-2">
+                <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white">SLIoT Challenge 2025 Semi-Finalists</h4>
+                <p className="text-gray-400 text-xs sm:text-sm mt-1">
                   Issued by Department of Computer Science and Engineering, University of Moratuwa · Mar 2025
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg mt-1">
+                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
                   Associated with University of Moratuwa
                 </p>
-                <p className="text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-gray-300 mt-2 text-xs sm:text-sm leading-relaxed">
                   Semi-Finalist – Sri Lanka&apos;s Largest IoT Competition. Honored to lead Team AmpArts in Sri Lanka&apos;s premier IoT competition, organized by the Department of Computer Science &amp; Engineering, University of Moratuwa. Our team was selected among the top 13 semi-finalists, showcasing innovation and technical expertise in IoT solutions.
                 </p>
               </div>
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-green-400/50 bg-black/20 overflow-hidden shrink-0 p-2">
-                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="96px" />
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-green-400/50 bg-black overflow-hidden shrink-0 p-1.5">
+                <Image src="/uom_logo.jpg" alt="University of Moratuwa logo" fill className="object-contain" sizes="56px" />
               </div>
             </div>
           </div>
@@ -255,27 +256,27 @@ const subsections = [
     title: "INTERESTS",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">INTERESTS</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          <div className="flex items-start gap-2 sm:gap-3">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">Networking</span>
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">INTERESTS</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Networking</span>
           </div>
-          <div className="flex items-start gap-2 sm:gap-3">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">System Architecture & Design</span>
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">System Architecture & Design</span>
           </div>
-          <div className="flex items-start gap-2 sm:gap-3">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">Cybersecurity & Linux</span>
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Cybersecurity & Linux</span>
           </div>
-          <div className="flex items-start gap-2 sm:gap-3">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">Cloud Technologies</span>
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Cloud Technologies</span>
           </div>
-          <div className="flex items-start gap-2 sm:gap-3">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full mt-1 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg">Open Source Projects</span>
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Open Source Projects</span>
           </div>
         </div>
       </>
@@ -286,11 +287,11 @@ const subsections = [
     title: "MORE",
     content: (
       <>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-green-400">MORE</h3>
-        <div className="space-y-6 sm:space-y-8">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-green-400">MORE</h3>
+        <div className="space-y-4 sm:space-y-5">
           <div>
-            <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2 sm:mb-4">Skills & Tools</h4>
-            <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+            <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-2">Skills & Tools</h4>
+            <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed">
               TypeScript, React, Node.js, Go, Python, PostgreSQL, Docker, AWS, Git, Vim, Linux, GraphQL, REST APIs
             </p>
           </div>
@@ -429,41 +430,37 @@ export default function AboutSection() {
   return (
     <div
       ref={sectionRef}
-      className="relative min-h-screen bg-black text-white flex flex-col lg:flex-row overflow-hidden"
+      className="relative min-h-screen bg-transparent text-white flex flex-col lg:flex-row overflow-hidden"
     >
-      {/* Pinned Image - Left Side (Desktop Only) */}
-      <div className="hidden lg:flex lg:w-1/2 items-center justify-center sticky top-0 h-screen flex-shrink-0">
+      {/* Download CV - Left Side (Desktop Only) */}
+      <div className="hidden lg:flex lg:w-1/4 xl:w-1/4 items-center justify-center sticky top-0 h-screen flex-shrink-0 border-r border-green-500/10">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative w-64 sm:w-80 md:w-96 lg:w-[30rem] h-96 lg:h-[30rem]"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-2xl" />
-          <div className="relative w-full h-full rounded-2xl border-2 border-green-500/30 overflow-hidden bg-black/30">
-            <Image
-              src="/AboutMe.jpg"
-              alt="About Me"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              priority
-            />
-          </div>
+          <a
+            href="/CV.pdf"
+            download="Kalhara_Jayathissa_CV.pdf"
+            className="group relative inline-flex items-center justify-center gap-3 px-7 py-3.5 text-base sm:text-lg font-semibold text-green-400 bg-black border border-green-500 rounded-xl transition-all duration-300 hover:bg-green-500 hover:text-black hover:shadow-[0_0_25px_rgba(34,197,94,0.4)] active:scale-95 cursor-pointer"
+          >
+            <Download className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+            <span>Download My CV</span>
+          </a>
         </motion.div>
       </div>
 
       {/* Desktop Scrollable Content */}
-      <div className="hidden lg:flex w-full lg:w-1/2 flex-1 h-screen items-center justify-center overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 py-8 sm:py-12 lg:py-16">
+      <div className="hidden lg:flex w-full lg:w-3/4 xl:w-3/4 flex-1 h-screen items-center justify-center overflow-hidden">
+        <div className="w-full h-full flex items-center justify-center px-6 md:px-10 lg:px-14 xl:px-16 py-4 sm:py-6 lg:py-8">
           <motion.div
             key={`subsection-${currentIndex}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
-            className="w-full max-w-xl"
+            className="w-full max-w-3xl xl:max-w-4xl"
           >
             {subsections[currentIndex].content}
 
@@ -507,18 +504,19 @@ export default function AboutSection() {
         >
           {subsections.map((section) => (
             <div key={section.id} className="w-full shrink-0 snap-start px-4">
-              <div className="min-h-[62vh] rounded-2xl border border-green-500/20 bg-black/40 p-5">
+              <div className="min-h-[62vh] rounded-2xl border border-green-500/20 bg-black p-5">
                 {section.content}
 
                 {section.id === "about" && (
-                  <div className="relative w-full max-w-sm h-80 mx-auto mt-6 rounded-2xl border-2 border-green-500/30 overflow-hidden bg-black/30">
-                    <Image
-                      src="/AboutMe.jpg"
-                      alt="About Me"
-                      fill
-                      className="object-cover object-[center_65%]"
-                      sizes="100vw"
-                    />
+                  <div className="mt-8 flex justify-center">
+                    <a
+                      href="/CV.pdf"
+                      download="Kalhara_Jayathissa_CV.pdf"
+                      className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-green-400 bg-black border border-green-500 rounded-xl transition-all duration-300 hover:bg-green-500 hover:text-black hover:shadow-[0_0_25px_rgba(34,197,94,0.4)] active:scale-95 cursor-pointer"
+                    >
+                      <Download className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                      <span>Download My CV</span>
+                    </a>
                   </div>
                 )}
               </div>
