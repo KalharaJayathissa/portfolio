@@ -452,7 +452,33 @@ export default function AboutSection() {
       </div>
 
       {/* Desktop Scrollable Content */}
-      <div className="hidden lg:flex w-full lg:w-3/4 xl:w-3/4 flex-1 h-screen items-center justify-center overflow-hidden">
+      <div className="hidden lg:flex w-full lg:w-3/4 xl:w-3/4 flex-1 h-screen items-center justify-center overflow-hidden relative">
+        {/* Desktop Vertical Dot Navigation (Minimalist) */}
+        <div className="absolute left-6 xl:left-8 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-3">
+          {subsections.map((section, index) => (
+            <button
+              key={section.id}
+              onClick={() => setCurrentIndex(index)}
+              className="group relative flex items-center justify-center p-1.5 focus:outline-none"
+              aria-label={`Navigate to ${section.title}`}
+            >
+              {/* Simple Dot */}
+              <span
+                className={`block rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "w-2.5 h-2.5 bg-green-400 shadow-[0_0_8px_rgba(34,197,94,0.8)] scale-110"
+                    : "w-2 h-2 bg-gray-600/60 group-hover:bg-green-400/70"
+                }`}
+              />
+
+              {/* Minimal Tooltip */}
+              <span className="absolute left-6 px-2 py-1 rounded bg-black/90 border border-green-500/20 text-green-400 text-[10px] font-medium tracking-wider whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-150 shadow-md">
+                {section.title}
+              </span>
+            </button>
+          ))}
+        </div>
+
         <div className="w-full h-full flex items-center justify-center px-6 md:px-10 lg:px-14 xl:px-16 py-4 sm:py-6 lg:py-8">
           <motion.div
             key={`subsection-${currentIndex}`}
