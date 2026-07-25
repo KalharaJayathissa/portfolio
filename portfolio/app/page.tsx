@@ -119,7 +119,7 @@ export default function Home() {
 
     const loadClientIp = async () => {
       try {
-        const response = await fetch("/api/client-ip", { cache: "no-store" })
+        const response = await fetch("https://api.ipify.org?format=json")
         if (!response.ok) return
 
         const data = (await response.json()) as { ip?: string }
@@ -184,37 +184,17 @@ export default function Home() {
     setStatusMessage({ text: "", type: "" });
 
     try {
-      // Send the data to the deployed API route
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData), 
-      });
+      const mailtoUrl = `mailto:waleww50@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(
+        formData.name
+      )}&body=Name:%20${encodeURIComponent(formData.name)}%0AEmail:%20${encodeURIComponent(
+        formData.email
+      )}%0A%0AMessage:%0A${encodeURIComponent(formData.message)}`;
 
-      if (response.ok) {
-        setStatusMessage({ text: "Message cooked and delivered successfully!", type: "success" });
-        // Clear the form after success
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        let errorMessage = "Oops! The batch failed. Try again."
-        try {
-          const data = await response.json() as { error?: string }
-          if (data?.error) {
-            errorMessage = data.error
-          }
-        } catch {
-          const text = await response.text()
-          if (text) {
-            errorMessage = text
-          }
-        }
-
-        setStatusMessage({ text: errorMessage, type: "error" });
-      }
-    } catch (error) {
-      setStatusMessage({ text: "Network error. Check your connection.", type: "error" });
+      window.location.href = mailtoUrl;
+      setStatusMessage({ text: "Opening your email client to send message...", type: "success" });
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setStatusMessage({ text: "Could not open email client.", type: "error" });
     } finally {
       setIsSubmitting(false);
     }
