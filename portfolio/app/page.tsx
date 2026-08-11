@@ -209,7 +209,7 @@ export default function Home() {
       duration={700}
     >
       <ContextMenu />
-      <div className="min-h-screen bg-black text-white pt-16 md:pt-20 overflow-x-hidden relative">
+      <div className="min-h-screen bg-black text-white pt-24 sm:pt-28 md:pt-24 overflow-x-hidden relative">
         {/* Fixed Background Grid Pattern spanning all black screens */}
         <ShapeGrid
           speed={isMobileViewport ? HERO_GRID_SPEED_MOBILE : HERO_GRID_SPEED_DESKTOP}
@@ -232,7 +232,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-3 right-4 sm:top-4 sm:right-6 lg:top-4 lg:right-40 z-20 flex flex-col items-end gap-0.5"
+            className="absolute top-2 right-4 sm:top-3 sm:right-6 lg:top-4 lg:right-40 z-20 flex flex-col items-end gap-0.5"
           >
             <ViewCounter pageName="home" />
             <p className="text-[10px] sm:text-xs text-white/70 tracking-wider">
@@ -350,9 +350,9 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="relative z-10 flex-1 flex items-end justify-center lg:justify-start pb-0 mt-4 lg:mt-0 lg:pl-12 xl:pl-24"
+            className="relative z-10 flex-1 flex items-end justify-center lg:justify-start pb-0 -mt-6 sm:-mt-2 lg:mt-0 -translate-y-3 sm:-translate-y-1 lg:translate-y-0 lg:pl-12 xl:pl-24"
           >
-            <div className="relative w-64 sm:w-72 lg:w-80 xl:w-96 h-[45vh] sm:h-[50vh] lg:h-[calc(90.9vh-80px)]">
+            <div className="relative w-64 sm:w-72 lg:w-80 xl:w-96 h-[46vh] sm:h-[50vh] lg:h-[calc(90.9vh-80px)]">
               <Image src="/me.png" alt="me" fill className="object-cover object-top" />
             </div>
           </motion.div>
