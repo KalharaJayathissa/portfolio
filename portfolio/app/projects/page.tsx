@@ -28,7 +28,7 @@ export default function ProjectsPage() {
         },
         {
             id: 2,
-            title: "DEVPULSE",
+            title: "Odin's Eye",
             description: "Microservices-based developer analytics platform analyzing 10+ repository metrics for productivity and code-quality insights. Features independent REST services using FastAPI, Spring Boot, PostgreSQL, Redis, RabbitMQ, and Docker on AWS.",
             tags: ["Next.js", "Spring Boot", "FastAPI", "PostgreSQL", "Redis", "RabbitMQ", "Docker", "AWS"],
             thumbnail: "/project-thumbnails/devpulse.png",
@@ -41,7 +41,7 @@ export default function ProjectsPage() {
         },
         {
             id: 3,
-            title: "PRYPIATOS - ENERGY MANAGEMENT SYSTEM (EMS)",
+            title: "PRYPIATOS-ENERGY MANAGEMENT SYSTEM (EMS)",
             description: "Real-time ESP32 edge firmware engineered with FreeRTOS mutexes and debounce logic to detect power anomalies across 3 edge nodes with 100% thread-safe state management, MQTT remote configuration, and buffered event reporting.",
             tags: ["ESP32", "C++", "FreeRTOS", "MQTT", "Docker", "GitHub Actions", "IoT"],
             thumbnail: "/project-thumbnails/energy-management-system.png",
@@ -180,14 +180,14 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="relative z-10 px-4 sm:px-6 md:px-12 py-8 md:py-12 pt-20 md:pt-24"
+                className="relative z-10 px-4 sm:px-6 md:px-12 py-12 md:py-16 pt-20 md:pt-24"
             >
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 tracking-tight">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
                         PROJECTS <span className="text-green-500">&</span> PRODUCTS
                     </h1>
-                    <p className="text-gray-400 max-w-2xl text-xs sm:text-sm leading-relaxed">
-                        A selection of platforms, distributed microservices, embedded systems, and open-source tooling.
+                    <p className="text-gray-300 max-w-2xl mb-10 text-sm sm:text-base md:text-lg leading-relaxed">
+                        A showcase of production platforms, distributed microservices, embedded IoT systems, and open-source tooling built with modern engineering standards.
                     </p>
                 </div>
             </motion.div>
@@ -198,57 +198,57 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="relative z-10 px-4 sm:px-6 md:px-12 pb-12 md:pb-16"
+                className="relative z-10 px-4 sm:px-6 md:px-12 pb-14 md:pb-20"
             >
                 <motion.div
                     variants={staggerContainer}
                     initial="initial"
                     animate="animate"
-                    className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+                    className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
                     {projects.map((project) => (
                         <motion.div
                             key={project.id}
                             variants={cardVariants}
                             whileHover={{
-                                y: -6,
-                                transition: { duration: 0.2 }
+                                y: -8,
+                                transition: { duration: 0.25 }
                             }}
-                            className="group relative bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-sm border border-green-500/30 hover:border-green-500/80 transition-all duration-300 overflow-hidden rounded-xl flex flex-col justify-between shadow-md shadow-black/60 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]"
+                            className="group relative bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-sm border-2 border-green-500/30 hover:border-green-500 transition-all duration-300 overflow-hidden rounded-2xl flex flex-col justify-between shadow-lg shadow-black/60 hover:shadow-[0_0_25px_rgba(34,197,94,0.2)]"
                         >
                             {/* Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:via-green-500/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
                             <div>
                                 {/* Thumbnail */}
-                                <div className="relative h-40 sm:h-44 w-full overflow-hidden border-b border-green-500/20 bg-black/60">
+                                <div className="relative h-48 md:h-52 w-full overflow-hidden border-b border-green-500/20 bg-black/60">
                                     <Image
                                         src={project.thumbnail}
                                         alt={project.title}
                                         fill
                                         unoptimized
                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-4 sm:p-5">
-                                    <h3 className="text-sm sm:text-base font-bold mb-2 text-white group-hover:text-green-400 transition-colors duration-200 leading-snug">
+                                <div className="p-6 md:p-7">
+                                    <h3 className="text-lg md:text-xl font-bold mb-3 text-white group-hover:text-green-400 transition-colors duration-200">
                                         {project.title}
                                     </h3>
 
-                                    <p className="text-gray-400 text-xs leading-relaxed mb-3.5">
+                                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-5">
                                         {project.description}
                                     </p>
 
                                     {/* Tags */}
-                                    <div className="flex flex-wrap gap-1 mb-4">
+                                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6">
                                         {project.tags.map((tag, index) => (
                                             <span
                                                 key={index}
-                                                className="text-[10px] font-medium bg-green-500/10 text-green-400 px-2 py-0.5 border border-green-500/20 rounded-full tracking-wide"
+                                                className="text-[11px] font-medium bg-green-500/10 text-green-400 px-2.5 py-0.5 border border-green-500/30 rounded-full"
                                             >
                                                 {tag}
                                             </span>
@@ -258,17 +258,17 @@ export default function ProjectsPage() {
                             </div>
 
                             {/* Action Links Footer */}
-                            <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 border-t border-green-500/10 mt-auto flex items-center justify-end gap-1.5 flex-wrap">
+                            <div className="px-6 pb-6 pt-0 border-t border-green-500/10 mt-auto flex items-center justify-end gap-2 flex-wrap">
                                 {project.links.map((link) => (
                                     <a
                                         key={link.href}
                                         href={link.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 text-[11px] font-medium tracking-wide text-green-400 hover:text-black bg-green-950/40 hover:bg-green-400 border border-green-500/30 hover:border-green-400 px-2.5 py-1 rounded-md transition-all duration-150 active:scale-95"
+                                        className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider text-green-400 hover:text-black bg-green-950/40 hover:bg-green-400 border border-green-500/30 hover:border-green-400 px-3 py-1.5 rounded-lg transition-all duration-200"
                                     >
                                         <span>{link.label}</span>
-                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                         </svg>
                                     </a>
@@ -285,14 +285,14 @@ export default function ProjectsPage() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="flex justify-center pb-12 md:pb-16 px-4 relative z-10"
+                className="flex justify-center pb-14 md:pb-20 px-4 relative z-10"
             >
                 <Link
                     href="/"
-                    className="group relative px-5 py-2.5 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-xs sm:text-sm tracking-wider overflow-hidden hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all duration-300 rounded-xl"
+                    className="group relative px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-green-500 to-teal-500 text-black font-bold text-base md:text-lg tracking-wider overflow-hidden hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 rounded-2xl"
                 >
-                    <span className="relative z-10 flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="relative z-10 flex items-center gap-3">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
                         BACK TO HOME
