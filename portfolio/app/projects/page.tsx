@@ -22,7 +22,7 @@ export default function ProjectsPage() {
                 },
                 {
                     label: "CODE REPO",
-                    href: "https://github.com/KalharaJayathissa/RiseUpMora"
+                    href: "https://github.com/KalharaJayathissa/RiseUpMora-web"
                 }
             ]
         },
@@ -34,8 +34,8 @@ export default function ProjectsPage() {
             thumbnail: "/project-thumbnails/devpulse.png",
             links: [
                 {
-                    label: "CODE REPO",
-                    href: "https://github.com/KalharaJayathissa/DevPulse"
+                    label: "PROJECT ORG",
+                    href: "https://github.com/orgs/Devpulse-3J"
                 }
             ]
         },
@@ -47,8 +47,8 @@ export default function ProjectsPage() {
             thumbnail: "/project-thumbnails/energy-management-system.png",
             links: [
                 {
-                    label: "CODE REPO",
-                    href: "https://github.com/KalharaJayathissa/Energy-Management-System"
+                    label: "PROJECT ORG",
+                    href: "https://github.com/Prypiatos"
                 }
             ]
         },
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
                 },
                 {
                     label: "BACKEND",
-                    href: "https://github.com/MORA-KESS/Inspire_backend"
+                    href: "https://github.com/KalharaJayathissa/Inspire_backend"
                 }
             ]
         },
@@ -85,8 +85,8 @@ export default function ProjectsPage() {
                     href: "https://www.siyowin.lk"
                 },
                 {
-                    label: "CODE REPO",
-                    href: "https://github.com/KalharaJayathissa/siyowin"
+                    label: "FRONTEND",
+                    href: "https://github.com/MRT-REGISTRY/siyowin-front-end"
                 }
             ]
         },

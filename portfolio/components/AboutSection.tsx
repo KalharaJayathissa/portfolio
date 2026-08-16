@@ -268,7 +268,11 @@ const subsections = [
           </div>
           <div className="flex items-start gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Cybersecurity & Linux</span>
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Relational Schema Design</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Linux(Debian/Arch)</span>
           </div>
           <div className="flex items-start gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
@@ -276,7 +280,7 @@ const subsections = [
           </div>
           <div className="flex items-start gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
-            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Open Source Projects</span>
+            <span className="text-gray-300 text-xs sm:text-sm md:text-base">Agentic Development</span>
           </div>
         </div>
       </>
@@ -292,7 +296,7 @@ const subsections = [
           <div>
             <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-2">Skills & Tools</h4>
             <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed">
-              TypeScript, React, Node.js, Go, Python, PostgreSQL, Docker, AWS, Git, Vim, Linux, GraphQL, REST APIs
+               React, Next.js, Express.js, Node.js, Python, JAVA, JavaScript, TypeScript, C++, PostgreSQL, MySQL, MongoDB, Docker, AWS, Git, GitHub, GitHub Actions, Linux, REST APIs, CI/CD, Embedded Firmware
             </p>
           </div>
         </div>
