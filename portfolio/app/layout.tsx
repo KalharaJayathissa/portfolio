@@ -8,6 +8,7 @@ import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const analyticsEnabled = process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === "true"
 
 export const metadata = {
   title: "Kalhara Jayathissa | CSE",
@@ -30,7 +31,7 @@ export default function RootLayout({
         <AnimatePresence mode="wait">
           {children}
         </AnimatePresence>
-        <Analytics />
+        {analyticsEnabled ? <Analytics /> : null}
       </body>
     </html>
   )
