@@ -5,13 +5,28 @@ import { AnimatePresence } from "framer-motion"
 import FluidCursor from "@/components/FluidCursor"
 import SplashCursor from "@/components/SplashCursor"
 import "./globals.css"
+import type { Metadata } from "next"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const analyticsEnabled = process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === "true"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Kalhara Jayathissa | CSE",
+  description:
+    "Engineer and computer science enthusiast focused on Fullstack systems, Backend development, security , and practical software products.",
+  openGraph: {
+    title: "Kalhara Jayathissa | CSE",
+    description:
+      "Engineer and computer science enthusiast building practical, secure full-stack products.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kalhara Jayathissa | CSE",
+    description:
+      "Engineer and computer science enthusiast building practical, secure full-stack products.",
+  },
   icons: {
     icon: "/AboutMe.jpg?v=2",
     shortcut: "/AboutMe.jpg?v=2",
