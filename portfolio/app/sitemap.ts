@@ -4,8 +4,6 @@ export const dynamic = "force-static";
 
 const siteUrl = "https://kalhara.me";
 
-export const dynamic = "force-static";
-
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
