@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { AnimatePresence } from "framer-motion"
 import FluidCursor from "@/components/FluidCursor"
 import SplashCursor from "@/components/SplashCursor"
+// @ts-expect-error -- Next.js handles global CSS side-effect imports
 import "./globals.css"
 import type { Metadata } from "next"
 

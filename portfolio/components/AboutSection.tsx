@@ -434,7 +434,7 @@ export default function AboutSection() {
   return (
     <div
       ref={sectionRef}
-      className="relative min-h-screen bg-transparent text-white flex flex-col lg:flex-row overflow-hidden"
+      className="relative min-h-screen bg-transparent text-white flex flex-col lg:flex-row overflow-hidden pr-14 sm:pr-24 lg:pr-28"
     >
       {/* Download CV - Left Side (Desktop Only) */}
       <div className="hidden lg:flex lg:w-1/4 xl:w-1/4 items-center justify-center sticky top-0 h-screen flex-shrink-0 border-r border-green-500/10">
