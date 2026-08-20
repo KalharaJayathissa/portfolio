@@ -251,7 +251,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
               className="max-w-md sm:max-w-lg lg:ml-6"
             >
-              <h1 className="mb-4 lg:mb-6 leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold">
+              <h1 className="mb-4 lg:mb-6 leading-tight text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
                 <span className="block">
                   <ShinyText
                     text="K"
