@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const siteUrl = "https://kalhara.me";
 
 export const dynamic = "force-static";
