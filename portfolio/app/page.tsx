@@ -184,7 +184,7 @@ export default function Home() {
     setStatusMessage({ text: "", type: "" });
 
     try {
-      const mailtoUrl = `mailto:waleww50@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(
+      const mailtoUrl = `mailto:kalharaj.23@cse.mrt.ac.lk?subject=Portfolio%20Message%20from%20${encodeURIComponent(
         formData.name
       )}&body=Name:%20${encodeURIComponent(formData.name)}%0AEmail:%20${encodeURIComponent(
         formData.email
