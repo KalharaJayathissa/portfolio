@@ -30,9 +30,15 @@ export async function POST(request: Request) {
 
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
+    const emailTo = process.env.EMAIL_TO?.trim();
 
     if (!emailUser || !emailPass) {
       console.error("Contact email credentials are not configured.");
+      return NextResponse.json({ error: "Email service is unavailable." }, { status: 500 });
+    }
+
+    if (!emailTo || !emailPattern.test(emailTo)) {
+      console.error("Contact email recipient is not configured or is invalid.");
       return NextResponse.json({ error: "Email service is unavailable." }, { status: 500 });
     }
 
@@ -43,7 +49,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: `Portfolio Contact <${emailUser}>`,
-      to: emailUser,
+      to: emailTo,
       replyTo: email,
       subject: `Portfolio message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
