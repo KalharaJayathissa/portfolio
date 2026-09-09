@@ -184,17 +184,25 @@ export default function Home() {
     setStatusMessage({ text: "", type: "" });
 
     try {
-      const mailtoUrl = `mailto:kalharaj.23@cse.mrt.ac.lk?subject=Portfolio%20Message%20from%20${encodeURIComponent(
-        formData.name
-      )}&body=Name:%20${encodeURIComponent(formData.name)}%0AEmail:%20${encodeURIComponent(
-        formData.email
-      )}%0A%0AMessage:%0A${encodeURIComponent(formData.message)}`;
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      window.location.href = mailtoUrl;
-      setStatusMessage({ text: "Opening your email client to send message...", type: "success" });
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || "Could not send message.");
+      }
+
+      setStatusMessage({ text: "Message cooked and delivered successfully!", type: "success" });
       setFormData({ name: "", email: "", message: "" });
-    } catch {
-      setStatusMessage({ text: "Could not open email client.", type: "error" });
+    } catch (error) {
+      setStatusMessage({
+        text: error instanceof Error ? error.message : "Could not send message.",
+        type: "error",
+      });
     } finally {
       setIsSubmitting(false);
     }
