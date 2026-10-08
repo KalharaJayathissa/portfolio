@@ -4,12 +4,15 @@ import DownloaderClient from "./DownloaderClient"
 const canonicalUrl = "https://kalhara.me/tiktok-insta-downloader"
 
 export const metadata: Metadata = {
-  title: "TikTok & Instagram Video Downloader - Fast, Free & No Watermark",
+  title: "TikTok, Instagram & Facebook Video Downloader - Fast, Free & No Watermark",
   description:
-    "Free online TikTok and Instagram video downloader. Download TikTok videos without watermark and Instagram Reels in high-definition MP4 with a single paste. No registration required.",
+    "Free online TikTok, Instagram, and Facebook video downloader. Download TikTok videos without watermark, Instagram Reels, and Facebook videos in high-definition MP4 with a single paste. No registration required.",
   keywords: [
     "tiktok video downloader",
     "instagram reel downloader",
+    "facebook video downloader",
+    "download facebook videos online",
+    "fb video download",
     "download tiktok without watermark",
     "instagram video saver",
     "tiktok mp4 downloader",
@@ -23,9 +26,9 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: "TikTok & Instagram Video Downloader - Free & No Watermark",
+    title: "TikTok, Instagram & Facebook Video Downloader - Free & No Watermark",
     description:
-      "Download TikTok and Instagram videos in HD MP4 with a single paste. 100% free, fast, and no watermark.",
+      "Download TikTok, Instagram, and Facebook videos in HD MP4 with a single paste. 100% free, fast, and no watermark.",
     url: canonicalUrl,
     siteName: "Kalhara Jayathissa",
     type: "website",
@@ -33,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TikTok & Instagram Video Downloader - Free & No Watermark",
+    title: "TikTok, Instagram & Facebook Video Downloader - Free & No Watermark",
     description:
-      "Instant video downloader for TikTok and Instagram Reels. No watermark, high quality, free forever.",
+      "Instant video downloader for TikTok, Instagram Reels, and Facebook videos. No watermark, high quality, free forever.",
   },
   robots: {
     index: true,
@@ -56,7 +59,7 @@ const jsonLd = {
     {
       "@type": "WebApplication",
       "@id": `${canonicalUrl}/#app`,
-      name: "TikTok & Instagram Video Downloader",
+      name: "TikTok, Instagram & Facebook Video Downloader",
       url: canonicalUrl,
       applicationCategory: "MultimediaApplication",
       operatingSystem: "All",
@@ -66,10 +69,11 @@ const jsonLd = {
         priceCurrency: "USD",
       },
       description:
-        "Fast, free tool to download TikTok videos without watermark and Instagram Reels in MP4 format directly to your device.",
+        "Fast, free tool to download TikTok videos without watermark, Instagram Reels, and Facebook videos in MP4 format directly to your device.",
       featureList: [
         "Download TikTok videos without watermark",
         "Download Instagram Reels and Videos",
+        "Download Facebook Videos and Reels",
         "Automatic download on paste",
         "Direct high-speed stream",
         "No login or installation required",
@@ -93,6 +97,14 @@ const jsonLd = {
           acceptedAnswer: {
             "@type": "Answer",
             text: "Yes, simply copy the URL of the Instagram Reel or video, paste it into the input, and the MP4 video file will start downloading immediately.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I download Facebook videos and Reels?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, copy any public Facebook video, Reel, or fb.watch link and paste it into the input box to start the MP4 download instantly.",
           },
         },
         {
@@ -146,7 +158,7 @@ export default function TikTokInstaDownloaderPage() {
             {/* How It Works */}
             <div className="space-y-6">
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-100 text-center">
-                How to Download TikTok &amp; Instagram Videos
+                How to Download TikTok, Instagram &amp; Facebook Videos
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
                 <div className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-2">
@@ -155,7 +167,7 @@ export default function TikTokInstaDownloaderPage() {
                   </div>
                   <h3 className="font-medium text-neutral-200">Copy the Link</h3>
                   <p className="text-xs text-neutral-400 leading-relaxed">
-                    Open TikTok or Instagram, find the video or Reel you want to save, and tap &ldquo;Share&rdquo; &rarr; &ldquo;Copy Link&rdquo;.
+                    Open TikTok, Instagram, or Facebook, find the video or Reel you want to save, and tap &ldquo;Share&rdquo; &rarr; &ldquo;Copy Link&rdquo;.
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-2">
@@ -240,6 +252,16 @@ export default function TikTokInstaDownloaderPage() {
 
                 <details className="group p-4 rounded-xl bg-neutral-900/50 border border-neutral-800/70 transition-all cursor-pointer">
                   <summary className="font-medium text-sm text-neutral-200 flex justify-between items-center list-none select-none">
+                    <span>Can I download Facebook videos and Reels?</span>
+                    <span className="text-neutral-500 group-open:rotate-180 transition-transform text-xs">▼</span>
+                  </summary>
+                  <p className="mt-3 text-xs text-neutral-400 leading-relaxed">
+                    Yes, copy any public Facebook video, Reel, or fb.watch link and paste it into the box to start the MP4 download immediately.
+                  </p>
+                </details>
+
+                <details className="group p-4 rounded-xl bg-neutral-900/50 border border-neutral-800/70 transition-all cursor-pointer">
+                  <summary className="font-medium text-sm text-neutral-200 flex justify-between items-center list-none select-none">
                     <span>Is this service free to use?</span>
                     <span className="text-neutral-500 group-open:rotate-180 transition-transform text-xs">▼</span>
                   </summary>
@@ -266,7 +288,7 @@ export default function TikTokInstaDownloaderPage() {
                 This tool is for personal and educational use only to download public content.
               </p>
               <p>
-                TikTok and Instagram are registered trademarks of their respective owners. This service is not affiliated with ByteDance or Meta.
+                TikTok, Instagram, and Facebook are registered trademarks of their respective owners. This service is not affiliated with ByteDance or Meta.
               </p>
             </div>
 

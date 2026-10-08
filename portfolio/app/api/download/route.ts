@@ -63,7 +63,7 @@ async function handleDownload(url: string | undefined, isCheckOnly: boolean) {
   const platform = detectPlatform(url);
   if (!platform) {
     return NextResponse.json(
-      { error: "Unsupported website. Please provide a TikTok or Instagram link." },
+      { error: "Unsupported website. Please provide a TikTok, Instagram, or Facebook link." },
       { status: 400 }
     );
   }
@@ -106,7 +106,9 @@ async function handleDownload(url: string | undefined, isCheckOnly: boolean) {
         Referer:
           extraction.platform === "tiktok"
             ? "https://www.tiktok.com/"
-            : "https://www.instagram.com/",
+            : extraction.platform === "instagram"
+            ? "https://www.instagram.com/"
+            : "https://www.facebook.com/",
       },
       signal: AbortSignal.timeout(45000),
     });

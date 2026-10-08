@@ -8,11 +8,17 @@ const TIKTOK_REGEX =
   /^https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/(?:@[^/]+\/(?:video|photo)\/\d+|v\/\d+|t\/[\w]+|[\w]+)\/?/i
 const INSTAGRAM_REGEX =
   /^https?:\/\/(?:www\.)?instagram\.com\/(?:[^/]+\/)?(?:p|reel|reels|tv|share)\/([a-zA-Z0-9_\-]+)/i
+const FACEBOOK_REGEX =
+  /^https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/.+/i
 
 function isValidUrl(url: string): boolean {
   if (!url || typeof url !== "string") return false
   const trimmed = url.trim()
-  return TIKTOK_REGEX.test(trimmed) || INSTAGRAM_REGEX.test(trimmed)
+  return (
+    TIKTOK_REGEX.test(trimmed) ||
+    INSTAGRAM_REGEX.test(trimmed) ||
+    FACEBOOK_REGEX.test(trimmed)
+  )
 }
 
 export default function DownloaderClient() {
@@ -33,7 +39,7 @@ export default function DownloaderClient() {
     if (!cleanUrl) return
 
     if (!isValidUrl(cleanUrl)) {
-      setErrorMessage("Please enter a valid TikTok or Instagram URL.")
+      setErrorMessage("Please enter a valid TikTok, Instagram, or Facebook URL.")
       setSuccessMessage(null)
       return
     }
@@ -126,11 +132,11 @@ export default function DownloaderClient() {
     if (e.key === "Enter") {
       e.preventDefault()
       if (!url.trim()) {
-        setErrorMessage("Please paste a TikTok or Instagram link.")
+        setErrorMessage("Please paste a TikTok, Instagram, or Facebook link.")
         return
       }
       if (!isValidUrl(url)) {
-        setErrorMessage("Please enter a valid TikTok or Instagram URL.")
+        setErrorMessage("Please enter a valid TikTok, Instagram, or Facebook URL.")
         return
       }
       triggerDownload(url)
@@ -167,7 +173,7 @@ export default function DownloaderClient() {
           <span>Free &bull; No Watermark &bull; HD MP4</span>
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-100">
-          TikTok &amp; Instagram Downloader
+          TikTok, Instagram &amp; Facebook Downloader
         </h1>
         <p className="text-sm sm:text-base text-neutral-400 max-w-md mx-auto">
           Download videos without watermarks. Just paste your link below and the download starts automatically.
@@ -185,8 +191,8 @@ export default function DownloaderClient() {
             onPaste={handlePaste}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
-            placeholder="Paste TikTok or Instagram URL"
-            aria-label="Paste TikTok or Instagram video URL"
+            placeholder="Paste TikTok, Instagram, or Facebook URL"
+            aria-label="Paste TikTok, Instagram, or Facebook video URL"
             className={`w-full pl-5 pr-28 sm:pr-36 py-4 sm:py-5 text-base sm:text-lg bg-neutral-900/90 border rounded-2xl shadow-2xl transition-all duration-200 outline-none
               ${
                 errorMessage

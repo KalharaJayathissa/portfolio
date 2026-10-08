@@ -3,7 +3,7 @@
  * Runs strictly on the server and provides direct media URLs for streaming.
  */
 
-export type SupportedPlatform = "tiktok" | "instagram";
+export type SupportedPlatform = "tiktok" | "instagram" | "facebook";
 
 export interface ExtractionResult {
   platform: SupportedPlatform;
@@ -18,14 +18,18 @@ const TIKTOK_REGEX =
 const INSTAGRAM_REGEX =
   /^https?:\/\/(?:www\.)?instagram\.com\/(?:[^/]+\/)?(?:p|reel|reels|tv|share)\/([a-zA-Z0-9_\-]+)/i;
 
+const FACEBOOK_REGEX =
+  /^https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/.+/i;
+
 /**
- * Validates whether a given URL is a supported TikTok or Instagram video URL.
+ * Validates whether a given URL is a supported TikTok, Instagram, or Facebook video URL.
  */
 export function detectPlatform(rawUrl: string): SupportedPlatform | null {
   if (!rawUrl || typeof rawUrl !== "string") return null;
   const trimmed = rawUrl.trim();
   if (TIKTOK_REGEX.test(trimmed)) return "tiktok";
   if (INSTAGRAM_REGEX.test(trimmed)) return "instagram";
+  if (FACEBOOK_REGEX.test(trimmed)) return "facebook";
   return null;
 }
 
@@ -328,17 +332,79 @@ async function extractInstagram(url: string): Promise<ExtractionResult> {
 }
 
 /**
- * Main dispatcher to extract media from either TikTok or Instagram.
+ * Extracts a downloadable media URL for Facebook.
+ */
+async function extractFacebook(url: string): Promise<ExtractionResult> {
+  const cleanUrl = url.trim();
+
+  try {
+    const formData = new URLSearchParams();
+    formData.append("url", cleanUrl);
+
+    const res = await fetch("https://snapsave.app/action.php?lang=en", {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        "content-type": "application/x-www-form-urlencoded",
+        origin: "https://snapsave.app",
+        referer: "https://snapsave.app/",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+      },
+      body: formData,
+      signal: AbortSignal.timeout(15000),
+    });
+
+    if (res.ok) {
+      const html = await res.text();
+      const decoded = decryptSnapSave(html);
+      if (decoded) {
+        const matches = Array.from(decoded.matchAll(/href="([^"]+)"/g));
+        const links = matches.map((m) => m[1]);
+        const validVideo = links.find(
+          (l) =>
+            l &&
+            l.startsWith("http") &&
+            !l.includes("play.google.com") &&
+            !l.includes("apple.com") &&
+            (l.includes("rapidcdn.app") ||
+              l.includes("fbcdn") ||
+              l.includes(".mp4") ||
+              l.includes("token=") ||
+              l.includes("download"))
+        );
+        if (validVideo) {
+          const videoIdMatch = cleanUrl.match(/(?:v=|videos\/|reel\/|posts\/)(\d+)/);
+          const id = videoIdMatch ? videoIdMatch[1] : "facebook_video";
+          return {
+            platform: "facebook",
+            mediaUrl: validVideo,
+            filename: `facebook_${id}.mp4`,
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("Facebook extraction failed:", err);
+  }
+
+  throw new Error("Unable to extract Facebook video. The video may be private, group-restricted, or removed.");
+}
+
+/**
+ * Main dispatcher to extract media from TikTok, Instagram, or Facebook.
  */
 export async function extractMedia(rawUrl: string): Promise<ExtractionResult> {
   const platform = detectPlatform(rawUrl);
   if (!platform) {
-    throw new Error("Unsupported website. Please provide a valid TikTok or Instagram link.");
+    throw new Error("Unsupported website. Please provide a valid TikTok, Instagram, or Facebook link.");
   }
 
   if (platform === "tiktok") {
     return await extractTikTok(rawUrl);
-  } else {
+  } else if (platform === "instagram") {
     return await extractInstagram(rawUrl);
+  } else {
+    return await extractFacebook(rawUrl);
   }
 }
