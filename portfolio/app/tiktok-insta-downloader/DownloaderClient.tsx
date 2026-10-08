@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Loader2, AlertCircle, CheckCircle2, Video, Sparkles, ShieldCheck, Zap } from "lucide-react"
+import { Loader2, AlertCircle, CheckCircle2, Video, Sparkles, ShieldCheck, Zap, Clipboard } from "lucide-react"
 
 const TIKTOK_REGEX =
   /^https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/(?:@[^/]+\/(?:video|photo)\/\d+|v\/\d+|t\/[\w]+|[\w]+)\/?/i
@@ -137,6 +137,27 @@ export default function DownloaderClient() {
     }
   }
 
+  // Handle "Paste Link" button click
+  const handlePasteButtonClick = async () => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard?.readText) {
+        const text = await navigator.clipboard.readText()
+        const trimmed = text?.trim()
+        if (trimmed) {
+          setUrl(trimmed)
+          setErrorMessage(null)
+          setSuccessMessage(null)
+          triggerDownload(trimmed)
+          return
+        }
+      }
+      inputRef.current?.focus()
+    } catch {
+      // If clipboard permission is restricted by browser policy, focus input directly
+      inputRef.current?.focus()
+    }
+  }
+
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center text-center space-y-6">
       {/* Title Header */}
@@ -153,7 +174,7 @@ export default function DownloaderClient() {
         </p>
       </div>
 
-      {/* URL Input Box */}
+      {/* URL Input Box & Paste Link Button */}
       <div className="w-full relative">
         <div className="relative flex items-center">
           <input
@@ -166,7 +187,7 @@ export default function DownloaderClient() {
             disabled={isLoading}
             placeholder="Paste TikTok or Instagram URL"
             aria-label="Paste TikTok or Instagram video URL"
-            className={`w-full px-5 py-4 sm:py-5 text-base sm:text-lg bg-neutral-900/90 border rounded-2xl shadow-2xl transition-all duration-200 outline-none
+            className={`w-full pl-5 pr-28 sm:pr-36 py-4 sm:py-5 text-base sm:text-lg bg-neutral-900/90 border rounded-2xl shadow-2xl transition-all duration-200 outline-none
               ${
                 errorMessage
                   ? "border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -177,11 +198,23 @@ export default function DownloaderClient() {
               text-neutral-100 placeholder:text-neutral-500 disabled:opacity-70`}
           />
 
-          {isLoading && (
-            <div className="absolute right-4 flex items-center pointer-events-none">
-              <Loader2 className="w-5 h-5 text-neutral-400 animate-spin" />
-            </div>
-          )}
+          <div className="absolute right-2.5 sm:right-3 flex items-center">
+            {isLoading ? (
+              <div className="px-3 flex items-center">
+                <Loader2 className="w-5 h-5 text-neutral-400 animate-spin" />
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={handlePasteButtonClick}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-xs sm:text-sm font-medium text-neutral-200 hover:text-white transition-all border border-neutral-700/80 hover:border-neutral-500 shadow-sm cursor-pointer"
+                title="Paste link from clipboard"
+              >
+                <Clipboard className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400" />
+                <span>Paste Link</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Status & Error Messages */}

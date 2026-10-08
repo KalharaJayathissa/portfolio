@@ -259,16 +259,6 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
               className="max-w-md sm:max-w-lg lg:ml-6"
             >
-              {/* Temporary Downloader Banner Pill */}
-              <Link
-                href="/tiktok-insta-downloader"
-                className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-full bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700/60 hover:border-neutral-500 text-xs text-neutral-300 hover:text-white transition-all backdrop-blur-md group shadow-md"
-              >
-                <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-medium tracking-wide">TikTok &amp; Instagram Downloader</span>
-                <span className="text-neutral-500 group-hover:translate-x-0.5 group-hover:text-neutral-300 transition-all text-xs">&rarr;</span>
-              </Link>
-
               <h1 className="mb-4 lg:mb-6 leading-tight text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
                 <span className="block">
                   <ShinyText
@@ -359,6 +349,18 @@ export default function Home() {
                     {item.icon}
                   </Link>
                 ))}
+              </div>
+
+              {/* Temporary Downloader Banner Pill */}
+              <div className="mt-5 sm:mt-6 flex justify-center lg:justify-start">
+                <Link
+                  href="/tiktok-insta-downloader"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700/60 hover:border-neutral-500 text-xs text-neutral-300 hover:text-white transition-all backdrop-blur-md group shadow-md"
+                >
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-medium tracking-wide">TikTok &amp; Instagram Downloader</span>
+                  <span className="text-neutral-500 group-hover:translate-x-0.5 group-hover:text-neutral-300 transition-all text-xs">&rarr;</span>
+                </Link>
               </div>
             </motion.div>
           </div>
