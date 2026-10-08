@@ -297,7 +297,8 @@ async function extractInstagram(url: string): Promise<ExtractionResult> {
     if (res.ok) {
       const html = await res.text();
       const matches = Array.from(html.matchAll(/href="([^"]+)"/g));
-      const valid = matches.find(
+      const links = matches.map((m) => m[1]);
+      const valid = links.find(
         (l) =>
           l &&
           l.startsWith("http") &&
