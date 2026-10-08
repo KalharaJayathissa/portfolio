@@ -4,21 +4,47 @@ import React, { useState, useRef, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Loader2, AlertCircle, CheckCircle2, Video, Sparkles, ShieldCheck, Zap, Clipboard } from "lucide-react"
 
-const TIKTOK_REGEX =
-  /^https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/(?:@[^/]+\/(?:video|photo)\/\d+|v\/\d+|t\/[\w]+|[\w]+)\/?/i
-const INSTAGRAM_REGEX =
-  /^https?:\/\/(?:www\.)?instagram\.com\/(?:[^/]+\/)?(?:p|reel|reels|tv|share)\/([a-zA-Z0-9_\-]+)/i
-const FACEBOOK_REGEX =
-  /^https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/.+/i
+function extractCleanUrl(text: string): string | null {
+  if (!text || typeof text !== "string") return null
 
-function isValidUrl(url: string): boolean {
-  if (!url || typeof url !== "string") return false
-  const trimmed = url.trim()
-  return (
-    TIKTOK_REGEX.test(trimmed) ||
-    INSTAGRAM_REGEX.test(trimmed) ||
-    FACEBOOK_REGEX.test(trimmed)
+  // 1. TikTok (avoid promotional tiktoklite link if an actual post link exists)
+  const tiktokMatch = text.match(
+    /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/[^\s]+/i
   )
+  if (tiktokMatch) {
+    if (tiktokMatch[0].includes("tiktoklite")) {
+      const allTiktok = text.match(
+        /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/[^\s]+/gi
+      )
+      const postLink = allTiktok?.find((u) => !u.includes("tiktoklite"))
+      if (postLink) return postLink.replace(/[),.;!]+$/, "")
+    }
+    return tiktokMatch[0].replace(/[),.;!]+$/, "")
+  }
+
+  // 2. Instagram
+  const instaMatch = text.match(
+    /https?:\/\/(?:www\.)?instagram\.com\/[^\s]+/i
+  )
+  if (instaMatch) {
+    return instaMatch[0].replace(/[),.;!]+$/, "")
+  }
+
+  // 3. Facebook
+  const fbMatch = text.match(
+    /https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/[^\s]+/i
+  )
+  if (fbMatch) {
+    return fbMatch[0].replace(/[),.;!]+$/, "")
+  }
+
+  // Generic URL fallback
+  const genericMatch = text.match(/https?:\/\/[^\s]+/i)
+  if (genericMatch) {
+    return genericMatch[0].replace(/[),.;!]+$/, "")
+  }
+
+  return null
 }
 
 export default function DownloaderClient() {
@@ -34,15 +60,16 @@ export default function DownloaderClient() {
     inputRef.current?.focus()
   }, [])
 
-  const triggerDownload = useCallback(async (targetUrl: string) => {
-    const cleanUrl = targetUrl.trim()
-    if (!cleanUrl) return
-
-    if (!isValidUrl(cleanUrl)) {
+  const triggerDownload = useCallback(async (targetInput: string) => {
+    const cleanUrl = extractCleanUrl(targetInput)
+    if (!cleanUrl) {
       setErrorMessage("Please enter a valid TikTok, Instagram, or Facebook URL.")
       setSuccessMessage(null)
       return
     }
+
+    // Normalize input display to the clean URL
+    setUrl(cleanUrl)
 
     if (processingRef.current) return
     processingRef.current = true
@@ -52,7 +79,7 @@ export default function DownloaderClient() {
     setSuccessMessage(null)
 
     try {
-      // Step 1: Preflight check on server
+      // Step 1: Preflight check on server (cached for step 2)
       const checkRes = await fetch(
         `/api/download?url=${encodeURIComponent(cleanUrl)}&check=1`,
         {
@@ -107,11 +134,12 @@ export default function DownloaderClient() {
 
   // Handle immediate paste event
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-    const pastedText = e.clipboardData.getData("text")?.trim()
-    if (pastedText && isValidUrl(pastedText)) {
+    const pastedText = e.clipboardData.getData("text")
+    const clean = extractCleanUrl(pastedText)
+    if (clean) {
       e.preventDefault()
-      setUrl(pastedText)
-      triggerDownload(pastedText)
+      setUrl(clean)
+      triggerDownload(clean)
     }
   }
 
@@ -122,8 +150,9 @@ export default function DownloaderClient() {
     setErrorMessage(null)
     setSuccessMessage(null)
 
-    if (isValidUrl(nextVal)) {
-      triggerDownload(nextVal)
+    const clean = extractCleanUrl(nextVal)
+    if (clean && clean.length > 15) {
+      triggerDownload(clean)
     }
   }
 
@@ -135,10 +164,6 @@ export default function DownloaderClient() {
         setErrorMessage("Please paste a TikTok, Instagram, or Facebook link.")
         return
       }
-      if (!isValidUrl(url)) {
-        setErrorMessage("Please enter a valid TikTok, Instagram, or Facebook URL.")
-        return
-      }
       triggerDownload(url)
     }
   }
@@ -148,12 +173,16 @@ export default function DownloaderClient() {
     try {
       if (typeof navigator !== "undefined" && navigator.clipboard?.readText) {
         const text = await navigator.clipboard.readText()
-        const trimmed = text?.trim()
-        if (trimmed) {
-          setUrl(trimmed)
+        const clean = extractCleanUrl(text)
+        if (clean) {
+          setUrl(clean)
           setErrorMessage(null)
           setSuccessMessage(null)
-          triggerDownload(trimmed)
+          triggerDownload(clean)
+          return
+        } else if (text?.trim()) {
+          setUrl(text.trim())
+          setErrorMessage("Please enter a valid TikTok, Instagram, or Facebook URL.")
           return
         }
       }

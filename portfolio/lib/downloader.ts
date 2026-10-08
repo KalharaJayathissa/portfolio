@@ -1,5 +1,5 @@
 /**
- * Server-side media extraction utility for TikTok and Instagram.
+ * Server-side media extraction utility for TikTok, Instagram, and Facebook.
  * Runs strictly on the server and provides direct media URLs for streaming.
  */
 
@@ -22,15 +22,89 @@ const FACEBOOK_REGEX =
   /^https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/.+/i;
 
 /**
- * Validates whether a given URL is a supported TikTok, Instagram, or Facebook video URL.
+ * Extracts a clean, standalone URL from user input, chat messages, or mobile share sheets.
+ * Handles inputs with leading text, timestamps, captions, and trailing promo links.
+ */
+export function extractCleanUrl(text: string): string | null {
+  if (!text || typeof text !== "string") return null;
+
+  // 1. Check for TikTok URL (ignoring secondary promotional links like tiktoklite)
+  const tiktokMatch = text.match(
+    /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/[^\s]+/i
+  );
+  if (tiktokMatch) {
+    if (tiktokMatch[0].includes("tiktoklite")) {
+      const allTiktok = text.match(
+        /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/[^\s]+/gi
+      );
+      const postLink = allTiktok?.find((u) => !u.includes("tiktoklite"));
+      if (postLink) return postLink.replace(/[),.;!]+$/, "");
+    }
+    return tiktokMatch[0].replace(/[),.;!]+$/, "");
+  }
+
+  // 2. Check for Instagram URL
+  const instaMatch = text.match(
+    /https?:\/\/(?:www\.)?instagram\.com\/[^\s]+/i
+  );
+  if (instaMatch) {
+    return instaMatch[0].replace(/[),.;!]+$/, "");
+  }
+
+  // 3. Check for Facebook URL
+  const fbMatch = text.match(
+    /https?:\/\/(?:www\.|m\.|web\.|touch\.)?(?:facebook\.com|fb\.watch)\/[^\s]+/i
+  );
+  if (fbMatch) {
+    return fbMatch[0].replace(/[),.;!]+$/, "");
+  }
+
+  // 4. Fallback to generic URL
+  const genericMatch = text.match(/https?:\/\/[^\s]+/i);
+  if (genericMatch) {
+    return genericMatch[0].replace(/[),.;!]+$/, "");
+  }
+
+  return null;
+}
+
+/**
+ * Validates whether a given URL or text contains a supported TikTok, Instagram, or Facebook URL.
  */
 export function detectPlatform(rawUrl: string): SupportedPlatform | null {
-  if (!rawUrl || typeof rawUrl !== "string") return null;
-  const trimmed = rawUrl.trim();
-  if (TIKTOK_REGEX.test(trimmed)) return "tiktok";
-  if (INSTAGRAM_REGEX.test(trimmed)) return "instagram";
-  if (FACEBOOK_REGEX.test(trimmed)) return "facebook";
+  const clean = extractCleanUrl(rawUrl);
+  if (!clean) return null;
+  if (TIKTOK_REGEX.test(clean)) return "tiktok";
+  if (INSTAGRAM_REGEX.test(clean)) return "instagram";
+  if (FACEBOOK_REGEX.test(clean)) return "facebook";
   return null;
+}
+
+// In-memory cache for fast preflight checks & immediate stream requests without double querying
+interface CacheEntry {
+  result: ExtractionResult;
+  expiresAt: number;
+}
+const extractionCache = new Map<string, CacheEntry>();
+
+function getCachedExtraction(url: string): ExtractionResult | null {
+  const entry = extractionCache.get(url);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) {
+    extractionCache.delete(url);
+    return null;
+  }
+  return entry.result;
+}
+
+function setCachedExtraction(url: string, result: ExtractionResult, ttlMs = 60000): void {
+  if (extractionCache.size > 200) {
+    const now = Date.now();
+    for (const [key, val] of extractionCache.entries()) {
+      if (now > val.expiresAt) extractionCache.delete(key);
+    }
+  }
+  extractionCache.set(url, { result, expiresAt: Date.now() + ttlMs });
 }
 
 /**
@@ -123,69 +197,64 @@ function decryptSnapSave(htmlData: string): string {
 /**
  * Extracts a downloadable media URL for TikTok.
  */
-async function extractTikTok(url: string): Promise<ExtractionResult> {
-  const cleanUrl = url.trim();
+async function extractTikTok(rawUrl: string): Promise<ExtractionResult> {
+  const cleanUrl = extractCleanUrl(rawUrl) || rawUrl.trim();
 
-  // Engine 1: TikWM
-  try {
-    const res = await fetch(
-      `https://www.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}`,
-      {
+  async function queryTikWM(endpoint: string) {
+    try {
+      const res = await fetch(`${endpoint}?url=${encodeURIComponent(cleanUrl)}`, {
         headers: {
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         },
         signal: AbortSignal.timeout(15000),
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (data.code === 0 && data.data) {
-        const mediaUrl = data.data.play || data.data.wmplay;
-        if (mediaUrl) {
-          const id = data.data.id || "tiktok_video";
-          return {
-            platform: "tiktok",
-            mediaUrl,
-            filename: `tiktok_${id}.mp4`,
-            title: data.data.title,
-          };
-        }
-      }
+      });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
     }
-  } catch (err) {
-    console.warn("TikWM extraction failed, trying mirror:", err);
+  }
+
+  // Engine 1: TikWM primary
+  let data = await queryTikWM("https://www.tikwm.com/api/");
+
+  // If rate-limited (1 req/sec), wait 1.2s and retry once
+  if (
+    data &&
+    data.code === -1 &&
+    (data.msg?.includes("1 request/second") || data.msg?.includes("Limit"))
+  ) {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    data = await queryTikWM("https://www.tikwm.com/api/");
+  }
+
+  if (data && data.code === 0 && data.data) {
+    const mediaUrl = data.data.play || data.data.wmplay;
+    if (mediaUrl) {
+      const id = data.data.id || "tiktok_video";
+      return {
+        platform: "tiktok",
+        mediaUrl,
+        filename: `tiktok_${id}.mp4`,
+        title: data.data.title,
+      };
+    }
   }
 
   // Engine 2: TikWM mirror
-  try {
-    const res = await fetch(
-      `https://api.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}`,
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        },
-        signal: AbortSignal.timeout(15000),
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (data.code === 0 && data.data) {
-        const mediaUrl = data.data.play || data.data.wmplay;
-        if (mediaUrl) {
-          const id = data.data.id || "tiktok_video";
-          return {
-            platform: "tiktok",
-            mediaUrl,
-            filename: `tiktok_${id}.mp4`,
-            title: data.data.title,
-          };
-        }
-      }
+  data = await queryTikWM("https://api.tikwm.com/api/");
+  if (data && data.code === 0 && data.data) {
+    const mediaUrl = data.data.play || data.data.wmplay;
+    if (mediaUrl) {
+      const id = data.data.id || "tiktok_video";
+      return {
+        platform: "tiktok",
+        mediaUrl,
+        filename: `tiktok_${id}.mp4`,
+        title: data.data.title,
+      };
     }
-  } catch (err) {
-    console.warn("TikWM mirror extraction failed:", err);
   }
 
   throw new Error("Unable to extract TikTok video. The video may be private, removed, or unavailable.");
@@ -194,8 +263,10 @@ async function extractTikTok(url: string): Promise<ExtractionResult> {
 /**
  * Extracts a downloadable media URL for Instagram.
  */
-async function extractInstagram(url: string): Promise<ExtractionResult> {
-  const cleanUrl = url.trim().replace(/\?.*$/, "").replace(/\/+$/, "") + "/";
+async function extractInstagram(rawUrl: string): Promise<ExtractionResult> {
+  const cleanUrl = (extractCleanUrl(rawUrl) || rawUrl.trim())
+    .replace(/\?.*$/, "")
+    .replace(/\/+$/, "") + "/";
   const shortcodeMatch = cleanUrl.match(/(?:reel|p|tv|reels)\/([a-zA-Z0-9_\-]+)/i);
   const shortcode = shortcodeMatch ? shortcodeMatch[1] : "instagram_reel";
 
@@ -251,91 +322,14 @@ async function extractInstagram(url: string): Promise<ExtractionResult> {
     console.warn("SnapSave extraction failed:", err);
   }
 
-  // Engine 2: SaveIG
-  try {
-    const body = new URLSearchParams({
-      q: cleanUrl,
-      t: "media",
-      lang: "en",
-    });
-    const res = await fetch("https://v3.saveig.app/api/ajaxSearch", {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "x-requested-with": "XMLHttpRequest",
-        referer: "https://saveig.app/en",
-      },
-      body,
-      signal: AbortSignal.timeout(15000),
-    });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.data) {
-        const matches = Array.from(data.data.matchAll(/href="([^"]+)"/g) as Iterable<RegExpExecArray>);
-        const links = matches.map((m: any) => m[1]);
-        const validLink = links.find(
-          (l: string) => l && l.startsWith("http") && !l.includes("saveig.app")
-        );
-        if (validLink) {
-          return {
-            platform: "instagram",
-            mediaUrl: validLink,
-            filename: `instagram_${shortcode}.mp4`,
-          };
-        }
-      }
-    }
-  } catch (err) {
-    console.warn("SaveIG extraction failed:", err);
-  }
-
-  // Engine 3: FastDL
-  try {
-    const params = new URLSearchParams({ url: cleanUrl });
-    const res = await fetch("https://fastdl.app/c/", {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        origin: "https://fastdl.app",
-        referer: "https://fastdl.app/en",
-      },
-      body: params,
-      signal: AbortSignal.timeout(15000),
-    });
-    if (res.ok) {
-      const html = await res.text();
-      const matches = Array.from(html.matchAll(/href="([^"]+)"/g));
-      const links = matches.map((m) => m[1]);
-      const valid = links.find(
-        (l) =>
-          l &&
-          l.startsWith("http") &&
-          (l.includes("cdninstagram") || l.includes("fbcdn") || l.includes(".mp4"))
-      );
-      if (valid) {
-        return {
-          platform: "instagram",
-          mediaUrl: valid,
-          filename: `instagram_${shortcode}.mp4`,
-        };
-      }
-    }
-  } catch (err) {
-    console.warn("FastDL extraction failed:", err);
-  }
-
   throw new Error("Unable to extract Instagram video. The post or reel may be private, expired, or deleted.");
 }
 
 /**
  * Extracts a downloadable media URL for Facebook.
  */
-async function extractFacebook(url: string): Promise<ExtractionResult> {
-  const cleanUrl = url.trim();
+async function extractFacebook(rawUrl: string): Promise<ExtractionResult> {
+  const cleanUrl = extractCleanUrl(rawUrl) || rawUrl.trim();
 
   try {
     const formData = new URLSearchParams();
@@ -393,18 +387,35 @@ async function extractFacebook(url: string): Promise<ExtractionResult> {
 
 /**
  * Main dispatcher to extract media from TikTok, Instagram, or Facebook.
+ * Includes fast in-memory caching to prevent duplicate upstream hits on sequential calls.
  */
 export async function extractMedia(rawUrl: string): Promise<ExtractionResult> {
-  const platform = detectPlatform(rawUrl);
+  const cleanUrl = extractCleanUrl(rawUrl);
+  if (!cleanUrl) {
+    throw new Error("Unsupported website. Please provide a valid TikTok, Instagram, or Facebook link.");
+  }
+
+  // Check cache first (e.g. from preflight check)
+  const cached = getCachedExtraction(cleanUrl);
+  if (cached) {
+    return cached;
+  }
+
+  const platform = detectPlatform(cleanUrl);
   if (!platform) {
     throw new Error("Unsupported website. Please provide a valid TikTok, Instagram, or Facebook link.");
   }
 
+  let result: ExtractionResult;
   if (platform === "tiktok") {
-    return await extractTikTok(rawUrl);
+    result = await extractTikTok(cleanUrl);
   } else if (platform === "instagram") {
-    return await extractInstagram(rawUrl);
+    result = await extractInstagram(cleanUrl);
   } else {
-    return await extractFacebook(rawUrl);
+    result = await extractFacebook(cleanUrl);
   }
+
+  // Cache for 60 seconds
+  setCachedExtraction(cleanUrl, result, 60000);
+  return result;
 }

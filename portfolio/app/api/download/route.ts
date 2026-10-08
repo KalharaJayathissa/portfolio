@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { detectPlatform, extractMedia } from "@/lib/downloader";
+import { detectPlatform, extractMedia, extractCleanUrl } from "@/lib/downloader";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -43,9 +43,18 @@ async function handleDownload(url: string | undefined, isCheckOnly: boolean) {
     );
   }
 
-  // 2. Validate URL syntax
+  // 2. Sanitize and extract clean URL from any messy user input (share sheets, timestamps, captions)
+  const cleanUrl = extractCleanUrl(url);
+  if (!cleanUrl) {
+    return NextResponse.json(
+      { error: "Please provide a valid TikTok, Instagram, or Facebook URL." },
+      { status: 400 }
+    );
+  }
+
+  // 3. Validate URL syntax
   try {
-    const parsed = new URL(url);
+    const parsed = new URL(cleanUrl);
     if (!["http:", "https:"].includes(parsed.protocol)) {
       return NextResponse.json(
         { error: "Invalid URL protocol. Must be HTTP or HTTPS." },
@@ -59,8 +68,8 @@ async function handleDownload(url: string | undefined, isCheckOnly: boolean) {
     );
   }
 
-  // 3. Validate supported website
-  const platform = detectPlatform(url);
+  // 4. Validate supported website
+  const platform = detectPlatform(cleanUrl);
   if (!platform) {
     return NextResponse.json(
       { error: "Unsupported website. Please provide a TikTok, Instagram, or Facebook link." },
@@ -68,10 +77,10 @@ async function handleDownload(url: string | undefined, isCheckOnly: boolean) {
     );
   }
 
-  // 4. Server-side media extraction
+  // 5. Server-side media extraction
   let extraction;
   try {
-    extraction = await extractMedia(url);
+    extraction = await extractMedia(cleanUrl);
   } catch (err: any) {
     const msg = err?.message || "Failed to extract video.";
     return NextResponse.json(
