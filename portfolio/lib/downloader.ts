@@ -104,10 +104,13 @@ function decryptSnapSave(htmlData: string): string {
 
     const section = decoded
       ?.split('getElementById("download-section").innerHTML = "')?.[1]
-      ?.split('"; document.getElementById("inputData").remove(); ')[0]
-      ?.replace(/\\(\\)?/g, "");
+      ?.split('"; document.getElementById("inputData").remove(); ')[0];
 
-    return section || decoded;
+    const targetHtml = section || decoded;
+    return targetHtml
+      .replace(/\\"/g, '"')
+      .replace(/\\'/g, "'")
+      .replace(/\\\//g, "/");
   } catch {
     return "";
   }
@@ -188,7 +191,7 @@ async function extractTikTok(url: string): Promise<ExtractionResult> {
  * Extracts a downloadable media URL for Instagram.
  */
 async function extractInstagram(url: string): Promise<ExtractionResult> {
-  const cleanUrl = url.trim().replace(/\?.*$/, "");
+  const cleanUrl = url.trim().replace(/\?.*$/, "").replace(/\/+$/, "") + "/";
   const shortcodeMatch = cleanUrl.match(/(?:reel|p|tv|reels)\/([a-zA-Z0-9_\-]+)/i);
   const shortcode = shortcodeMatch ? shortcodeMatch[1] : "instagram_reel";
 
@@ -221,9 +224,14 @@ async function extractInstagram(url: string): Promise<ExtractionResult> {
           (l) =>
             l &&
             l.startsWith("http") &&
-            (l.includes("cdninstagram") ||
+            !l.includes("play.google.com") &&
+            !l.includes("apple.com") &&
+            !l.includes("facebook.com") &&
+            (l.includes("rapidcdn.app") ||
+              l.includes("cdninstagram") ||
               l.includes("fbcdn") ||
               l.includes(".mp4") ||
+              l.includes("token=") ||
               l.includes("download"))
         );
         if (validVideo) {
